@@ -13,3 +13,4 @@ Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->n
 Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');

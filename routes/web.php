@@ -1,18 +1,11 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\LoginController;
 Route::get('/', function () {
-    return view('welcome');
+// return view('welcome');
+return redirect()->route('backend.login');
 });
+Route::get('backend/login', [LoginController::class, 'loginBackend'])->name('backend.login');
+Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login');
+Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');

@@ -1,6 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BerandaController;
+use Illuminate\Support\Facades\Route;use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -13,3 +12,4 @@ Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->n
 Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+Route::get('backend/beranda', [LoginController::class, 'berandaBackend'])->name('backend.beranda');

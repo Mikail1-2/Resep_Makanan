@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,11 +12,38 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::create([
+            'nama' => 'Administrator',
+            'email' => 'admin@admin.com',
+            'role' => '1',
+            'status' => 1,
+            'hp' => '0812345678901',
+            'password' => bcrypt('P@55word'),
+        ]);
+        #untuk record berikutnya silahkan, beri nilai berbeda pada nilai: nama, email, hp dengan nilai masing-masing anggota kelompok
+        User::create([
+            'nama' => 'Dwi Ario Anggoro',
+            'email' => 'dwiario@gmail.com',
+            'role' => '0',
+            'status' => 1,
+            'hp' => '081234567892',
+            'password' => bcrypt('P@55word'),
+        ]);
+        User::create([
+            'nama' => 'Mikail Al Ghifary',
+            'email' => 'mikail@gmail.com',
+            'role' => '0',
+            'status' => 1,
+            'hp' => '081234567893',
+            'password' => bcrypt('P@55word'),
+        ]);
+        User::create([
+            'nama' => 'Hilman Saukani',
+            'email' => 'hilman@gmail.com',
+            'role' => '0',
+            'status' => 1,
+            'hp' => '081234567894',
+            'password' => bcrypt('P@55word'),
+        ]);
     }
 }

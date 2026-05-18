@@ -1,55 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>{{ $judul ?? 'Register - ResepKu' }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ asset('frontend/css/register.css') }}">
 </head>
-
 <body>
 
-    <h3>{{$judul}}</h3>
+    <div class="login-container">
+        <div class="login-card">
+            
+            <div class="logo">
+                <h2>Foody</h2>
+                <p>Daftar untuk membuat akun resep makanan</p>
+            </div>
 
-    <form action="{{ route('register.store') }}" method="POST">
-        @csrf
+            <form action="{{ route('register.store') }}" method="POST">
+                @csrf
 
-        <label>Nama</label><br>
-        <input type="text" name="nama" value="{{ old('nama') }}">
-        <br>
-        @error('nama')
-            {{$message}}
-        @enderror
+                <label>Nama</label>
+                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama" value="{{ old('nama') }}">
+                @error('nama')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
 
-        <p></p>
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Masukkan Email" value="{{ old('email') }}">
+                @error('email')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
 
-        <label>Email</label><br>
-        <input type="email" name="email" value="{{ old('email') }}">
-        <br>
-        @error('email')
-            {{$message}}
-        @enderror
+                <label>No HP</label>
+                <input type="text" name="hp" class="form-control" placeholder="Masukkan No HP" value="{{ old('hp') }}">
+                @error('hp')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
 
-        <p></p>
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
+                @error('password')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
 
-        <label>No HP</label><br>
-        <input type="text" name="hp" value="{{ old('hp') }}">
+                <button type="submit" class="login-btn">Register</button>
 
-        <p></p>
+                <div class="register-text">
+                    Already have an account? <a href="{{ route('backend.login') }}" class="register-link">Login</a>
+                </div>
 
-        <label>Password</label><br>
-        <input type="password" name="password">
-        <br>
-        @error('password')
-            {{$message}}
-        @enderror
-
-        <p></p>
-
-        <button type="submit">Register</button>
-
-    </form>
+            </form>
+        </div>
+    </div>
 
 </body>
-
 </html>

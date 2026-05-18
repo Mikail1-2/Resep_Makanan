@@ -6,7 +6,7 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
 // return view('welcome');
-return redirect()->route('backend.login');
+    return redirect()->route('backend.login');
 });
 Route::get('backend/login', [LoginController::class, 'loginBackend'])->name('backend.login');
 Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login');

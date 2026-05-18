@@ -33,8 +33,9 @@ body{
 
 .logo h2{
     color:#ff8c42;
-    font-size:34px;
     margin-bottom:8px;
+    font-size:34px;
+    letter-spacing:1px;
 }
 
 .logo p{

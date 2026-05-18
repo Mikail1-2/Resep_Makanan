@@ -23,8 +23,9 @@ body{
 
 .logo h2{
     color:#ff8c42;
-    margin-bottom:50px;
-    font-size:32px;
+    margin-bottom:45px;
+    font-size:34px;
+    letter-spacing:1px;
 }
 
 .sidebar ul{

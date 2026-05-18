@@ -8,6 +8,9 @@
     <title>Login</title>
 
     <link rel="stylesheet" href="{{ asset('frontend/css/login.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
 </head>
 
 <body>
@@ -16,7 +19,7 @@
         <div class="login-card">
 
             <div class="logo">
-                <h2>Foody</h2>
+                <h2>Resepku</h2>
                 <p>Login untuk mengakses dashboard resep makanan</p>
             </div>
 

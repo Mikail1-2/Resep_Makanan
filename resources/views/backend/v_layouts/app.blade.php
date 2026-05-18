@@ -17,7 +17,7 @@
     <aside class="sidebar">
 
         <div class="logo">
-            <h2>Foody.</h2>
+            <h2>Resepku</h2>
         </div>
 
         <ul>

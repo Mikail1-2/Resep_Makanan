@@ -15,7 +15,7 @@ class RegisterController extends Controller
             'judul' => 'Register User',
         ];
 
-        return view('backend.v_register', $data);
+        return view('backend.v_register.register', $data);
     }
 
     // proses register

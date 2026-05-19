@@ -20,7 +20,7 @@
         <div class="login-card">
 
             <div class="back-wrapper">
-                <a href="javascript:history.back()" class="back-btn">
+                <a href="{{ route('backend.beranda') }}" class="back-btn">
                     ✕
                 </a>
             </div>

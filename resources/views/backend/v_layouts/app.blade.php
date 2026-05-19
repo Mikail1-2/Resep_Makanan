@@ -24,7 +24,11 @@
             </div>
 
             <ul>
-                <li class="active">Dashboard</li>
+                <li>
+                    <a href="{{ route('backend.beranda') }}">
+                        Dashboard
+                    </a>
+                </li>
                 <li>Recipes</li>
                 <li>Categories</li>
                 <li>Analytics</li>

@@ -6,7 +6,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', [BerandaController::class, 'berandaBackend'])->name('dashboard');
-
 Route::get('backend/login', [LoginController::class, 'loginBackend'])->name('backend.login');
 Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login');
 Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');

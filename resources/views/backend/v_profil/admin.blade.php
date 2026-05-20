@@ -4,7 +4,7 @@
 
 <div class="card">
 
-    <h2>Super Admin Profile</h2>
+    <h2>Admin Profile</h2>
 
     <br>
 

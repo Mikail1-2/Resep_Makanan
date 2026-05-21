@@ -1,15 +1,19 @@
-<?php 
+<?php
 
-namespace App\Http\Controllers; 
+namespace App\Http\Controllers;
 
-use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Auth;
 
-class BerandaController extends Controller 
-{ 
-    public function berandaBackend() 
-    { 
-        return view('backend.v_beranda.index', [ 
-            'judul' => 'Halaman Beranda',
-        ]); 
-    } 
+class BerandaController extends Controller
+{
+    public function berandaBackend()
+    {
+        if (Auth::check() && Auth::user()->role == '1') {
+
+            return view('backend.v_beranda.admin');
+
+        }
+
+        return view('backend.v_beranda.index');
+    }
 }

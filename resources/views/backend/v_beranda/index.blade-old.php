@@ -50,7 +50,7 @@
         <img src="{{ asset('frontend/images/veganbowl.jpg') }}">
 
         <div class="recipe-content">
-            <h3>Vegan Bowl</h3>
+            <h3>Hidup Jokowi</h3>
             <p>Healthy vegan recipe with nutrition.</p>
         </div>
     </div>

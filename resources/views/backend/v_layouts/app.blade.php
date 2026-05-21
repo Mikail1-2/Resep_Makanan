@@ -29,38 +29,73 @@
                         Dashboard
                     </a>
                 </li>
-                <li>Recipes</li>
-                <li>Categories</li>
-                <li>Analytics</li>
-                <li>Settings</li>
+                <li>
+                    <a href="{{ route('backend.recipe') }}">
+                        Recipes
+                    </a>
+                </li>
+
+                @auth
+
+                    @if(Auth::user()->role == '0')
+
+                        <li>
+                            <a href="{{ route('backend.create') }}">
+                                Create Recipe
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                My Recipes
+                            </a>
+                        </li>
+
+                    @endif
+
+                    @if(Auth::user()->role == '1')
+
+                        <li>
+                            <a href="#">
+                                Recipes Approval
+                            </a>
+                        </li>
+
+                    @endif
+
+                @endauth
             </ul>
 
         </aside>
 
         <main class="main-content">
 
-            <div class="topbar">
-                <h1>Food Dashboard</h1>
-                
-                <div class="topbar-action">
-                    @guest
-                        <a href="{{ route('backend.login') }}" class="profile-btn">
-                            Login
-                        </a>
-                    @endguest
+            @if(Request::route()->getName() == 'backend.beranda')
+            
+                <div class="topbar">
+                    <h1>Food Dashboard</h1>
 
-                    @auth
-                        <a href="{{ route('backend.profile') }}" class="profile-btn">
-                            Profile
-                        </a>
+                    <div class="topbar-action">
+                        @guest
+                            <a href="{{ route('backend.login') }}" class="profile-btn">
+                                Login
+                            </a>
+                        @endguest
 
-                        <form action="{{ route('backend.logout') }}" method="POST">
-                            @csrf
-                            <button class="logout-btn">Logout</button>
-                        </form>
-                    @endauth
+                        @auth
+                            <a href="{{ route('backend.profile') }}" class="profile-btn">
+                                Profile
+                            </a>
+
+                            <form action="{{ route('backend.logout') }}" method="POST">
+                                @csrf
+                                <button class="logout-btn">Logout</button>
+                            </form>
+                        @endauth
+                    </div>
                 </div>
-            </div>
+
+            @endif
 
             @yield('content')
 

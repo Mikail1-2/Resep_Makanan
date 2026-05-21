@@ -11,7 +11,7 @@ class ProfileController extends Controller
     {
         if(Auth::user()->role == '1'){
 
-            return view('backend.v_profil.superadmin');
+            return view('backend.v_profil.admin');
 
         } else {
 

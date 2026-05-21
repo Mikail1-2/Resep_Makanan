@@ -42,11 +42,11 @@
                 </option>
 
                 <option value="Lunch">
-                    Lunch
+                    Desert
                 </option>
 
                 <option value="Dinner">
-                    Dinner
+                    Minuman
                 </option>
 
                 <option value="Dessert">

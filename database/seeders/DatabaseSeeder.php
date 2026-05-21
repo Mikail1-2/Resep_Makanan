@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Kategori;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'hp' => '0812345678901',
             'password' => bcrypt('P@55word'),
         ]);
-        #untuk record berikutnya silahkan, beri nilai berbeda pada nilai: nama, email, hp dengan nilai masing-masing anggota kelompok
+
         User::create([
             'nama' => 'Dwi Ario Anggoro',
             'email' => 'dwiario@gmail.com',
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'hp' => '081234567892',
             'password' => bcrypt('P@55word'),
         ]);
+
         User::create([
             'nama' => 'Mikail Al Ghifary',
             'email' => 'mikail@gmail.com',
@@ -37,6 +39,7 @@ class DatabaseSeeder extends Seeder
             'hp' => '081234567893',
             'password' => bcrypt('P@55word'),
         ]);
+
         User::create([
             'nama' => 'Hilman Saukani',
             'email' => 'hilman@gmail.com',
@@ -44,6 +47,18 @@ class DatabaseSeeder extends Seeder
             'status' => 1,
             'hp' => '081234567894',
             'password' => bcrypt('P@55word'),
+        ]);
+
+        Kategori::create([
+            'name' => 'makanan'
+        ]);
+
+        Kategori::create([
+            'name' => 'minuman'
+        ]);
+
+        Kategori::create([
+            'name' => 'dessert'
         ]);
     }
 }

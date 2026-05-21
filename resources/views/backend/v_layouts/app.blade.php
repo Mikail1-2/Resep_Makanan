@@ -28,7 +28,29 @@
                 <li>
                     <a href="{{ route('backend.recipe') }}">Recipes</a>
                 </li>
+                <li class="category-wrapper">
 
+                    <div class="category-toggle">
+                        Categories
+                    </div>
+
+                    <div class="subcategory">
+
+                        <a href="{{ route('backend.makanan') }}">
+                            Makanan
+                        </a>
+
+                        <a href="{{ route('backend.minuman') }}">
+                            Minuman
+                        </a>
+
+                        <a href="{{ route('backend.dessert') }}">
+                            Dessert
+                        </a>
+
+                    </div>
+
+                </li>
                 @auth
 
                     @if(Auth::user()->role == '0')
@@ -54,7 +76,7 @@
        <main class="main-content">
             {{-- TOPBAR CUMA MUNCUL KALAU RUTE SAAT INI ADALAH 'backend.beranda' --}}
             @if(Request::route()->getName() == 'backend.beranda')
-            
+
                 <div class="topbar">
                     <h1>Food Dashboard</h1>
 
@@ -89,7 +111,7 @@
         </main>
 
     </div>
-
+    <script src="{{ asset('frontend/js/dropdown.js') }}"></script>
 </body>
 
 </html>

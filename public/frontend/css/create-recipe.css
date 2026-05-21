@@ -1,0 +1,60 @@
+.page-title {
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.create-recipe-card {
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+    background: #fafafa;
+    font-family: "Poppins", sans-serif;
+}
+
+.form-control:focus {
+    border-color: #ff8c42;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 140, 66, 0.12);
+}
+
+textarea.form-control {
+    resize: none;
+}
+
+.publish-btn {
+    border: none;
+    background: #ff8c42;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.publish-btn:hover {
+    background: #ff7a21;
+}

@@ -7,10 +7,8 @@
     <title>Foody Dashboard</title>
 
     <link rel="stylesheet" href="{{ asset('frontend/css/beranda.css') }}">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -25,42 +23,27 @@
 
             <ul>
                 <li>
-                    <a href="{{ route('backend.beranda') }}">
-                        Dashboard
-                    </a>
+                    <a href="{{ route('backend.beranda') }}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('backend.recipe') }}">
-                        Recipes
-                    </a>
+                    <a href="{{ route('backend.recipe') }}">Recipes</a>
                 </li>
 
                 @auth
 
                     @if(Auth::user()->role == '0')
-
                         <li>
-                            <a href="{{ route('backend.create') }}">
-                                Create Recipe
-                            </a>
+                            <a href="{{ route('backend.create') }}">Create Recipe</a>
                         </li>
-
                         <li>
-                            <a href="#">
-                                My Recipes
-                            </a>
+                            <a href="#">My Recipes</a>
                         </li>
-
                     @endif
 
                     @if(Auth::user()->role == '1')
-
                         <li>
-                            <a href="#">
-                                Recipes Approval
-                            </a>
+                            <a href="#">Recipes Approval</a>
                         </li>
-
                     @endif
 
                 @endauth
@@ -68,36 +51,40 @@
 
         </aside>
 
-        <main class="main-content">
-
+       <main class="main-content">
+            {{-- TOPBAR CUMA MUNCUL KALAU RUTE SAAT INI ADALAH 'backend.beranda' --}}
             @if(Request::route()->getName() == 'backend.beranda')
             
                 <div class="topbar">
                     <h1>Food Dashboard</h1>
 
-                    <div class="topbar-action">
+                    <div class="topbar-action" style="display: flex; gap: 15px; align-items: center;">
+                        
                         @guest
-                            <a href="{{ route('backend.login') }}" class="profile-btn">
+                            <a href="{{ route('backend.login') }}" class="profile-btn" style="text-decoration: none;">
                                 Login
                             </a>
                         @endguest
 
                         @auth
-                            <a href="{{ route('backend.profile') }}" class="profile-btn">
+                            <a href="{{ route('backend.profile') }}" class="profile-btn" style="text-decoration: none;">
                                 Profile
                             </a>
 
-                            <form action="{{ route('backend.logout') }}" method="POST">
+                            <form action="{{ route('backend.logout') }}" method="POST" style="margin: 0;">
                                 @csrf
                                 <button class="logout-btn">Logout</button>
                             </form>
                         @endauth
+
                     </div>
                 </div>
 
             @endif
 
-            @yield('content')
+            <div class="content" style="padding-top: 20px;">
+                @yield('content')
+            </div>
 
         </main>
 

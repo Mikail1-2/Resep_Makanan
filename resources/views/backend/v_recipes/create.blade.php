@@ -8,7 +8,7 @@
 
 <div class="create-recipe-card">
 
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('backend.recipe.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -19,7 +19,7 @@
             </label>
 
             <input type="text"
-                   name="title"
+                   name="recipe_name"
                    placeholder="Enter recipe name"
                    class="form-control">
 

@@ -20,7 +20,7 @@ class CreateRecipeController extends Controller
         // Validasi inputan agar tidak ada yang kosong
         $request->validate([
             'recipe_name' => 'required',
-            'category' => 'required',
+            'kategori_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Wajib gambar, maks 2MB
             'ingredients' => 'required',
             'instructions' => 'required',

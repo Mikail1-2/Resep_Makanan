@@ -31,25 +31,21 @@
                 Category
             </label>
 
-            <select name="category" class="form-control">
+            <select name="kategori_id" class="form-control">
 
                 <option value="">
                     Select Category
                 </option>
 
-                <option value="Breakfast">
-                    Breakfast
+                <option value="1">
+                    Makanan
                 </option>
 
-                <option value="Lunch">
-                    Desert
-                </option>
-
-                <option value="Dinner">
+                <option value="2">
                     Minuman
                 </option>
 
-                <option value="Dessert">
+                <option value="3">
                     Dessert
                 </option>
 

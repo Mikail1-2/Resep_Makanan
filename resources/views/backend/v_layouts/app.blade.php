@@ -8,11 +8,14 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/beranda.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    {{-- INI DIA COLOKAN AJAIBNYA! --}}
+    @stack('styles')
 </head>
 
 <body>
-
     <div class="container">
 
         <aside class="sidebar">
@@ -73,7 +76,7 @@
 
         </aside>
 
-       <main class="main-content">
+        <main class="main-content">
             {{-- TOPBAR CUMA MUNCUL KALAU RUTE SAAT INI ADALAH 'backend.beranda' --}}
             @if(Request::route()->getName() == 'backend.beranda')
 
@@ -81,7 +84,7 @@
                     <h1>Food Dashboard</h1>
 
                     <div class="topbar-action" style="display: flex; gap: 15px; align-items: center;">
-                        
+
                         @guest
                             <a href="{{ route('backend.login') }}" class="profile-btn" style="text-decoration: none;">
                                 Login

@@ -23,7 +23,7 @@ class RegisterController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:user,email',
             'password' => 'required|min:6',
             'hp' => 'nullable|max:13'
         ]);
@@ -33,11 +33,11 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'hp' => $request->hp,
-            'role' => 'customer',
+            'role' => '0',
             'status' => 1
         ]);
 
-        return redirect()->route('login')
+        return redirect()->route('backend.login')
                          ->with('success', 'Register berhasil');
     }
 }

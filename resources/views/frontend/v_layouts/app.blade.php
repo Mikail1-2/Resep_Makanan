@@ -26,10 +26,10 @@
 
             <ul>
                 <li>
-                    <a href="{{ route('backend.beranda') }}">Dashboard</a>
+                    <a href="{{ route('web.utama') }}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('backend.recipe') }}">Recipes</a>
+                    <a href="{{ route('publik.recipe') }}">Recipes</a>
                 </li>
                 <li class="category-wrapper">
 
@@ -39,15 +39,15 @@
 
                     <div class="subcategory">
 
-                        <a href="{{ route('backend.makanan') }}">
+                        <a href="{{ route('publik.makanan') }}">
                             Makanan
                         </a>
 
-                        <a href="{{ route('backend.minuman') }}">
+                        <a href="{{ route('publik.minuman') }}">
                             Minuman
                         </a>
 
-                        <a href="{{ route('backend.dessert') }}">
+                        <a href="{{ route('publik.dessert') }}">
                             Dessert
                         </a>
 
@@ -78,7 +78,7 @@
 
         <main class="main-content">
             {{-- TOPBAR CUMA MUNCUL KALAU RUTE SAAT INI ADALAH 'backend.beranda' --}}
-            @if(Request::route()->getName() == 'backend.beranda')
+            @if(Request::route()->getName() == 'web.utama')
 
                 <div class="topbar">
                     <h1>Food Dashboard</h1>
@@ -86,7 +86,7 @@
                     <div class="topbar-action" style="display: flex; gap: 15px; align-items: center;">
 
                         @guest
-                            <a href="{{ route('backend.login') }}" class="profile-btn" style="text-decoration: none;">
+                            <a href="{{ route('login') }}" class="profile-btn" style="text-decoration: none;">
                                 Login
                             </a>
                         @endguest

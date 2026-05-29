@@ -20,13 +20,13 @@ class BerandaController extends Controller
     {
         // Ambil 3 resep terbaru saja (biar pas dengan desain 3 kolom di gambarmu)
         $resep_terbaru = \App\Models\Recipe::orderBy('created_at', 'desc')->take(3)->get();
-        
+
         // Hitung total seluruh resep yang ada di database
         $total_resep = \App\Models\Recipe::count();
-        
-        // Asumsi total kategori, bisa disesuaikan kalau kamu punya tabel Kategori
-        $total_kategori = 12; 
 
-        return view('frontend.beranda', compact('resep_terbaru', 'total_resep', 'total_kategori'));
+        // Asumsi total kategori, bisa disesuaikan kalau kamu punya tabel Kategori
+        $total_kategori = 12;
+
+        return view('frontend.v_beranda.index', compact('resep_terbaru', 'total_resep', 'total_kategori'));
     }
 }

@@ -1,5 +1,4 @@
-@extends('backend.v_layouts.app')
-
+@extends('frontend.v_layouts.app')
 @section('content')
 <div class="detail-container" style="padding: 20px; background: #fff; border-radius: 10px; margin-top: 20px;">
     

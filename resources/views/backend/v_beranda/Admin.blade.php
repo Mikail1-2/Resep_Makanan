@@ -1,111 +1,177 @@
+```php
 @extends('backend.v_layouts.app')
 
 @section('content')
 
-<h1 style="margin-bottom:30px;">
-    Dashboard Admin
-</h1>
+    <div class="metrics">
 
-<div class="metrics">
+        <div class="metric-card">
 
-    <div class="metric-card">
-        <h4>Total Recipe</h4>
-        <h2>120</h2>
-    </div>
+            <div class="metric-top">
 
-    <div class="metric-card">
-        <h4>Total User</h4>
-        <h2>45</h2>
-    </div>
+                <div class="metric-icon">
+                    🍜
+                </div>
 
-    <div class="metric-card">
-        <h4>Today's Visitor</h4>
-        <h2>230</h2>
-    </div>
+            </div>
 
-    <div class="metric-card">
-        <h4>Pending Approval</h4>
-        <h2>7</h2>
-    </div>
+            <h4>Total Recipe</h4>
 
-</div>
+            <h2>120</h2>
 
-<div class="row2">
-
-    <div class="card">
-
-        <h3>
-            Recent User
-        </h3>
-
-        <div class="log-item">
-            Hilman Saukani
         </div>
 
-        <div class="log-item">
-            Mikail Al Ghifary
+        <div class="metric-card">
+
+            <div class="metric-top">
+
+                <div class="metric-icon">
+                    👤
+                </div>
+
+            </div>
+
+            <h4>Total User</h4>
+
+            <h2>45</h2>
+
         </div>
 
-        <div class="log-item">
-            Dwi Ario
+        <div class="metric-card">
+
+            <div class="metric-top">
+
+                <div class="metric-icon">
+                    👁️
+                </div>
+
+            </div>
+
+            <h4>Today's Visitor</h4>
+
+            <h2>230</h2>
+
         </div>
 
-    </div>
+        <div class="metric-card">
 
-    <div class="card">
+            <div class="metric-top">
 
-        <h3>
-            Recent Recipe
-        </h3>
+                <div class="metric-icon">
+                    ⏳
+                </div>
 
-        <div class="log-item">
-            Nasi Goreng
+            </div>
+
+            <h4>Pending Approval</h4>
+
+            <h2>7</h2>
+
         </div>
 
-        <div class="log-item">
-            Steak Potato
+        <div class="metric-card">
+
+            <h4>Total User</h4>
+
+            <h2>45</h2>
+
         </div>
 
-        <div class="log-item">
-            Orange Juice
+        <div class="metric-card">
+
+            <h4>Today's Visitor</h4>
+
+            <h2>230</h2>
+
         </div>
 
-    </div>
+        <div class="metric-card">
 
-</div>
+            <h4>Pending Approval</h4>
 
-<div class="row2">
-
-    <div class="card">
-
-        <h3>
-            Comment Moderation
-        </h3>
-
-        <div class="comment-item">
-            Great recipe!
-        </div>
-
-        <div class="comment-item">
-            Very delicious food
-        </div>
-
-    </div>
-
-    <div class="card">
-
-        <h3>
-            Recipe Categories
-        </h3>
-
-        <div class="chart-container">
-
-            <canvas id="recipeChart"></canvas>
+            <h2>7</h2>
 
         </div>
 
     </div>
 
-</div>
+    <div class="row2">
+
+        <div class="card">
+
+            <h3>
+                Recent User
+            </h3>
+
+            <div class="log-item">
+                Hilman Saukani
+            </div>
+
+            <div class="log-item">
+                Mikail Al Ghifary
+            </div>
+
+            <div class="log-item">
+                Dwi Ario
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+                Recent Recipe
+            </h3>
+
+            <div class="log-item">
+                Nasi Goreng
+            </div>
+
+            <div class="log-item">
+                Steak Potato
+            </div>
+
+            <div class="log-item">
+                Orange Juice
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row2">
+
+        <div class="card">
+
+            <h3>
+                Comment Moderation
+            </h3>
+
+            <div class="comment-item">
+                Great Recipe!
+            </div>
+
+            <div class="comment-item">
+                Delicious Food!
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+                Recipe Categories
+            </h3>
+
+            <div class="chart-container">
+
+                Pie Chart Here
+
+            </div>
+
+        </div>
+
+    </div>
 
 @endsection
+```

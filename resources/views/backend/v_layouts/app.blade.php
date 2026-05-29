@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('backend/css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/beranda-admin.css') }}">
     {{-- INI DIA COLOKAN AJAIBNYA! --}}
     @stack('styles')
 </head>
@@ -74,13 +74,13 @@
 
                     <div class="topbar-action">
 
-                        <a href="{{ route('backend.profile') }}" class="profile-btn" style="text-decoration:none;">
+                        <a href="{{ route('frontend.profile') }}" class="profile-btn" style="text-decoration:none;">
 
                             Profile
 
                         </a>
 
-                        <form action="{{ route('backend.logout') }}" method="POST" style="margin:0;">
+                        <form action="{{ route('logout') }}" method="POST" style="margin:0;">
 
                             @csrf
 

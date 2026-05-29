@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function loginBackend()
     {
-        return view('backend.v_login.login', [
+        return view('frontend.v_login.login', [
             'judul' => 'login',
         ]);
     }

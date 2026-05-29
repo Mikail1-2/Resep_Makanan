@@ -32,8 +32,8 @@ class LoginController extends Controller
 
             $request->session()->regenerate();
 
-            // CEK ROLE DI SINI (0 = Admin, 1 = User Biasa)
-            if (Auth::user()->role == 0) {
+            // CEK ROLE DI SINI (0 = User, 1 = Admin)
+            if (Auth::user()->role == 1) {
                 // Admin dilempar ke Dashboard Admin
                 return redirect()->intended(route('backend.beranda'));
             } else {

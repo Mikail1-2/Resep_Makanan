@@ -29,7 +29,7 @@
                     <a href="{{ route('backend.beranda') }}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('backend.recipe') }}">Recipes</a>
+                    <a href="{{ route('#') }}">Recipes</a>
                 </li>
                 <li class="category-wrapper">
 
@@ -39,15 +39,15 @@
 
                     <div class="subcategory">
 
-                        <a href="{{ route('backend.makanan') }}">
+                        <a href="{{ route('#') }}">
                             Makanan
                         </a>
 
-                        <a href="{{ route('backend.minuman') }}">
+                        <a href="{{ route('#') }}">
                             Minuman
                         </a>
 
-                        <a href="{{ route('backend.dessert') }}">
+                        <a href="{{ route('#') }}">
                             Dessert
                         </a>
 

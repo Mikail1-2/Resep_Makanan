@@ -92,7 +92,7 @@
                         @endguest
 
                         @auth
-                            <a href="{{ route('backend.profile') }}" class="profile-btn" style="text-decoration: none;">
+                            <a href="{{ route('fr.profile') }}" class="profile-btn" style="text-decoration: none;">
                                 Profile
                             </a>
 

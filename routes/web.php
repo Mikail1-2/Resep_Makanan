@@ -9,10 +9,13 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CreateRecipeController;
 use App\Http\Controllers\KategoriController;
 
+Route::get('backend/{any?}', function () {
+    return redirect()->route('beranda');
+})->where('any', '.*');
 Route::get('/', [BerandaController::class, 'indexGuest'])->name('web.utama');
 Route::get('login', [LoginController::class, 'loginBackend'])->name('login');
 Route::post('login', [LoginController::class, 'authenticateBackend'])->name('login');
-Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
+Route::post('logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
 Route::get('backend/register', [RegisterController::class, 'index'])->name('register');
 Route::post('backend/register', [RegisterController::class, 'store'])->name('register.store');
 Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');

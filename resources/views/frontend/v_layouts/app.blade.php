@@ -58,7 +58,7 @@
 
                     @if(Auth::user()->role == '0')
                         <li>
-                            <a href="{{ route('backend.create') }}">Create Recipe</a>
+                            <a href="{{ route('frontend.create') }}">Create Recipe</a>
                         </li>
                         <li>
                             <a href="#">My Recipes</a>
@@ -92,11 +92,11 @@
                         @endguest
 
                         @auth
-                            <a href="{{ route('fr.profile') }}" class="profile-btn" style="text-decoration: none;">
+                            <a href="{{ route('frontend.profile') }}" class="profile-btn" style="text-decoration: none;">
                                 Profile
                             </a>
 
-                            <form action="{{ route('backend.logout') }}" method="POST" style="margin: 0;">
+                            <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
                                 @csrf
                                 <button class="logout-btn">Logout</button>
                             </form>

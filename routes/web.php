@@ -30,7 +30,7 @@ Route::get('/login', [LoginController::class, 'loginBackend'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticateBackend'])->name('login.proses');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
-Route::post('/logout', [LoginController::class, 'logoutBackend'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 /*
@@ -44,7 +44,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
     Route::get('backend/profile', [ProfileController::class, 'index'])->name('backend.profile');
 
+    Route::get('/profile', [ProfileController::class, 'index'])->name('frontend.profile');
+
     // Fitur Create Recipe
-    Route::get('backend/create', [CreateRecipeController::class, 'index'])->name('backend.create');
-    Route::post('backend/recipe/store', [CreateRecipeController::class, 'store'])->name('backend.recipe.store');
+    Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
+    Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
+
 });

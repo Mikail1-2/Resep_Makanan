@@ -52,6 +52,6 @@ class LoginController extends Controller
         request()->session()->regenerateToken();
 
         // UBAH INI: Biar pas logout balik ke halaman depan (Guest), bukan ke admin lagi
-        return redirect()->route('backend.beranda');
+        return redirect()->route('web.utama');
     }
 }

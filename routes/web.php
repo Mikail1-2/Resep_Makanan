@@ -10,8 +10,8 @@ use App\Http\Controllers\CreateRecipeController;
 use App\Http\Controllers\KategoriController;
 
 Route::get('/', [BerandaController::class, 'indexGuest'])->name('web.utama');
-Route::get('backend/login', [LoginController::class, 'loginBackend'])->name('backend.login');
-Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login');
+Route::get('login', [LoginController::class, 'loginBackend'])->name('login');
+Route::post('login', [LoginController::class, 'authenticateBackend'])->name('login');
 Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
 Route::get('backend/register', [RegisterController::class, 'index'])->name('register');
 Route::post('backend/register', [RegisterController::class, 'store'])->name('register.store');

@@ -86,7 +86,7 @@
                     <div class="topbar-action" style="display: flex; gap: 15px; align-items: center;">
 
                         @guest
-                            <a href="{{ route('backend.login') }}" class="profile-btn" style="text-decoration: none;">
+                            <a href="{{ route('login') }}" class="profile-btn" style="text-decoration: none;">
                                 Login
                             </a>
                         @endguest

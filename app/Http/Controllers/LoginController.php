@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function loginBackend()
     {
-        return view('v_login.login', [
+        return view('frontend.v_login.login', [
             'judul' => 'login',
         ]);
     }
@@ -38,7 +38,7 @@ class LoginController extends Controller
                 return redirect()->intended(route('backend.beranda'));
             } else {
                 // Selain Admin dilempar ke Halaman Utama/Guest
-                return redirect('/beranda');
+                return redirect('/backend/beranda/');
             }
         }
 
@@ -52,6 +52,6 @@ class LoginController extends Controller
         request()->session()->regenerateToken();
 
         // UBAH INI: Biar pas logout balik ke halaman depan (Guest), bukan ke admin lagi
-        return redirect()->route('/beranda');
+        return redirect()->route('backend.beranda');
     }
 }

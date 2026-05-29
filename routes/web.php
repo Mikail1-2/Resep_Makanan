@@ -9,22 +9,42 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CreateRecipeController;
 use App\Http\Controllers\KategoriController;
 
-Route::get('backend/{any?}', function () {
-    return redirect()->route('beranda');
-})->where('any', '.*');
+/*
+|--------------------------------------------------------------------------
+| 1. ZONA BEBAS (PUBLIK) - Tamu tidak akan dilempar ke halaman login
+|--------------------------------------------------------------------------
+*/
+
+// Beranda Utama
 Route::get('/', [BerandaController::class, 'indexGuest'])->name('web.utama');
-Route::get('login', [LoginController::class, 'loginBackend'])->name('login');
-Route::post('login', [LoginController::class, 'authenticateBackend'])->name('login');
-Route::post('logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
-Route::get('backend/register', [RegisterController::class, 'index'])->name('register');
-Route::post('backend/register', [RegisterController::class, 'store'])->name('register.store');
-Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
-Route::get('backend/profile', [ProfileController::class, 'index'])->middleware('auth')->name('backend.profile');
-Route::get('backend/recipe', [RecipeController::class, 'index'])->name('backend.recipe');
-Route::get('backend/create', [CreateRecipeController::class, 'index'])->name('backend.create');
-Route::post('backend/recipe/store', [CreateRecipeController::class, 'store'])->name('backend.recipe.store');
-Route::get('backend/makanan', [KategoriController::class, 'makanan'])->name('backend.makanan');
-Route::get('backend/minuman', [KategoriController::class, 'minuman'])->name('backend.minuman');
-Route::get('backend/dessert', [KategoriController::class, 'dessert'])->name('backend.dessert');
-// Rute untuk melihat detail resep (menangkap ID resep)
-Route::get('/resep/detail/{id}', [App\Http\Controllers\RecipeController::class, 'detail'])->name('resep.detail');
+
+// Halaman Kategori & Resep
+Route::get('/makanan', [KategoriController::class, 'makanan'])->name('publik.makanan');
+Route::get('/minuman', [KategoriController::class, 'minuman'])->name('publik.minuman');
+Route::get('/dessert', [KategoriController::class, 'dessert'])->name('publik.dessert');
+Route::get('/recipe', [RecipeController::class, 'index'])->name('publik.recipe');
+Route::get('/resep/detail/{id}', [RecipeController::class, 'detail'])->name('resep.detail');
+
+// Autentikasi (URL diubah dari 'backend/login' menjadi '/login' agar standar)
+Route::get('/login', [LoginController::class, 'loginBackend'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticateBackend'])->name('login.proses');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+Route::post('/logout', [LoginController::class, 'logoutBackend'])->name('logout');
+
+
+/*
+|--------------------------------------------------------------------------
+| 2. ZONA TERLARANG (AUTH) - Wajib Login
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])->group(function () {
+
+    // Halaman khusus setelah login
+    Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
+    Route::get('backend/profile', [ProfileController::class, 'index'])->name('backend.profile');
+
+    // Fitur Create Recipe
+    Route::get('backend/create', [CreateRecipeController::class, 'index'])->name('backend.create');
+    Route::post('backend/recipe/store', [CreateRecipeController::class, 'store'])->name('backend.recipe.store');
+});

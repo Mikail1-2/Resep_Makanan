@@ -22,7 +22,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            
+
             // SAYA MATIKAN DULU CEK STATUSNYA BIAR KAMU BISA LOGIN
             // Kalau memang butuh, hapus tanda // nya, tapi pastikan status Admin di database = 1
             if (Auth::user()->status == 0) {
@@ -38,7 +38,7 @@ class LoginController extends Controller
                 return redirect()->intended(route('backend.beranda'));
             } else {
                 // Selain Admin dilempar ke Halaman Utama/Guest
-                return redirect('/');
+                return redirect('/backend/beranda/');
             }
         }
 
@@ -50,8 +50,8 @@ class LoginController extends Controller
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        
+
         // UBAH INI: Biar pas logout balik ke halaman depan (Guest), bukan ke admin lagi
-        return redirect()->route('backend.beranda'); 
+        return redirect()->route('backend.beranda');
     }
 }

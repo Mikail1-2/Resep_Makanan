@@ -29,13 +29,13 @@ class RecipeController extends Controller
         // 2. Cek angka kategori_id milik resep tersebut
         if ($resep->kategori_id == 1) {
             // Jika kategori_id = 1 (Makanan), buka file d-makanan
-            return view('backend.v_kategori.d-makanan', compact('resep'));
+            return view('frontend.v_kategori.d-makanan', compact('resep'));
         } elseif ($resep->kategori_id == 2) {
             // Jika kategori_id = 2 (Minuman), buka file d-minuman
-            return view('backend.v_kategori.d-minuman', compact('resep'));
+            return view('frontend.v_kategori.d-minuman', compact('resep'));
         } else {
             // Jika kategori_id = 3 (Dessert), buka file d-dessert
-            return view('backend.v_kategori.d-dessert', compact('resep'));
+            return view('frontend.v_kategori.d-dessert', compact('resep'));
         }
     }
 }

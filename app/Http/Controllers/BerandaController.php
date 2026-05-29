@@ -13,13 +13,13 @@ class BerandaController extends Controller
             return view('backend.v_beranda.Admin');
 
         }
-        return view('backend.v_beranda.index');
+        return view('frontend.v_beranda.index');
     }
 
     public function indexGuest()
     {
         // Ambil 3 resep terbaru saja (biar pas dengan desain 3 kolom di gambarmu)
-        $resep_terbaru = \App\Models\Recipe::orderBy('created_at', 'desc')->take(3)->get();
+        $resep_terbaru = \App\Models\Recipe::orderBy('created_at', 'desc')->get();
 
         // Hitung total seluruh resep yang ada di database
         $total_resep = \App\Models\Recipe::count();

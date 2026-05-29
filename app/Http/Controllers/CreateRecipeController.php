@@ -11,7 +11,7 @@ class CreateRecipeController extends Controller
     // Fungsi untuk menampilkan halaman form (Sudah ada)
     public function index()
     {
-        return view('backend.v_recipes.create');
+        return view('frontend.v_recipes.create');
     }
 
     // 2. Tambahkan fungsi store() ini untuk memproses form

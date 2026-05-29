@@ -103,16 +103,40 @@
                 Recent User
             </h3>
 
-            <div class="log-item">
-                Hilman Saukani
+            <div class="user-item">
+
+                <div class="user-info">
+
+                    <h4>Hilman Saukani</h4>
+
+                    <small>User</small>
+
+                </div>
+
             </div>
 
-            <div class="log-item">
-                Mikail Al Ghifary
+            <div class="user-item">
+
+                <div class="user-info">
+
+                    <h4>Mikail Al Ghifary</h4>
+
+                    <small>User</small>
+
+                </div>
+
             </div>
 
-            <div class="log-item">
-                Dwi Ario
+            <div class="user-item">
+
+                <div class="user-info">
+
+                    <h4>Dwi Ario</h4>
+
+                    <small>User</small>
+
+                </div>
+
             </div>
 
         </div>
@@ -123,16 +147,52 @@
                 Recent Recipe
             </h3>
 
-            <div class="log-item">
-                Nasi Goreng
+            <div class="recipe-item">
+
+                <div>
+
+                    <h4>Nasi Goreng</h4>
+
+                    <small>Makanan</small>
+
+                </div>
+
+                <span class="recipe-status">
+                    Published
+                </span>
+
             </div>
 
-            <div class="log-item">
-                Steak Potato
+            <div class="recipe-item">
+
+                <div>
+
+                    <h4>Orange Juice</h4>
+
+                    <small>Minuman</small>
+
+                </div>
+
+                <span class="recipe-status">
+                    Published
+                </span>
+
             </div>
 
-            <div class="log-item">
-                Orange Juice
+            <div class="recipe-item">
+
+                <div>
+
+                    <h4>Ice Cream</h4>
+
+                    <small>Dessert</small>
+
+                </div>
+
+                <span class="recipe-status">
+                    Pending
+                </span>
+
             </div>
 
         </div>
@@ -165,12 +225,58 @@
 
             <div class="chart-container">
 
-                Pie Chart Here
+                <canvas id="recipeChart"></canvas>
 
             </div>
 
         </div>
+        <script>
 
+            const ctx = document.getElementById('recipeChart');
+
+            new Chart(ctx, {
+
+                type: 'pie',
+
+                data: {
+
+                    labels: ['Makanan', 'Minuman', 'Dessert'],
+
+                    datasets: [{
+
+                        data: [45, 25, 30],
+
+                        backgroundColor: [
+                            '#ff8c42',
+                            '#ffa94d',
+                            '#ffd8a8'
+                        ],
+
+                        borderWidth: 0
+
+                    }]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    plugins: {
+
+                        legend: {
+
+                            position: 'bottom'
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+        </script>
     </div>
 
 @endsection

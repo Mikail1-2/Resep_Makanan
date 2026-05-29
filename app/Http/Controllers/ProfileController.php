@@ -11,11 +11,11 @@ class ProfileController extends Controller
     {
         if(Auth::user()->role == '1'){
 
-            return view('backend.v_profil.admin');
+            return view('frontend.v_profil.admin');
 
         } else {
 
-            return view('backend.v_profil.user');
+            return view('frontend.v_profil.user');
 
         }
     }

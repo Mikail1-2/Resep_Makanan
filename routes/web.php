@@ -41,6 +41,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
 
     // Halaman khusus setelah login
+    Route::get('/beranda', [BerandaController::class, 'berandaUser'])->name('user.beranda');
     Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('frontend.profile');

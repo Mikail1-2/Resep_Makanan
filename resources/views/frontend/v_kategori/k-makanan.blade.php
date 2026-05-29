@@ -1,5 +1,4 @@
-@extends('backend.v_layouts.app')
-
+@extends('frontend.v_layouts.app')
 {{-- TITIP CSS KHUSUS HALAMAN MAKANAN --}}
 @push('styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/makanan.css') }}?v={{ time() }}">

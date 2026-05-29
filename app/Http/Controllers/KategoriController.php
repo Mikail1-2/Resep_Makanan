@@ -28,6 +28,6 @@ class KategoriController extends Controller
         $recipes = \App\Models\Recipe::where('kategori_id', 3)->get();
 
         // 2. Koki menyerahkan piringnya ke pelayan menggunakan compact('recipes')
-        return view('frontend.vka', compact('recipes'));
+        return view('frontend.v_kategori.k-dessert', compact('recipes'));
     }
 }

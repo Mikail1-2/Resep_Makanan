@@ -30,7 +30,7 @@ Route::get('/login', [LoginController::class, 'loginBackend'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticateBackend'])->name('login.proses');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
-Route::post('/logout', [LoginController::class, 'logoutBackend'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 /*
@@ -39,13 +39,15 @@ Route::post('/logout', [LoginController::class, 'logoutBackend'])->name('logout'
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth'])->group(function () {
-    
+
     // Halaman khusus setelah login
+    Route::get('/beranda', [BerandaController::class, 'berandaUser'])->name('user.beranda');
     Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
+
     Route::get('/profile', [ProfileController::class, 'index'])->name('frontend.profile');
-    
+
     // Fitur Create Recipe
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
-    
+
 });

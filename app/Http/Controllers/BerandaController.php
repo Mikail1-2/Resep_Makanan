@@ -18,10 +18,15 @@ class BerandaController extends Controller
 
     public function indexGuest()
     {
-        // Panggil model Recipe kalau kamu mau nampilin data resep di halaman depan
-        $recipes = \App\Models\Recipe::all();
+        // Ambil 3 resep terbaru saja (biar pas dengan desain 3 kolom di gambarmu)
+        $resep_terbaru = \App\Models\Recipe::orderBy('created_at', 'desc')->take(3)->get();
+        
+        // Hitung total seluruh resep yang ada di database
+        $total_resep = \App\Models\Recipe::count();
+        
+        // Asumsi total kategori, bisa disesuaikan kalau kamu punya tabel Kategori
+        $total_kategori = 12; 
 
-        // Ganti 'backend.v_beranda.guest' sesuai dengan nama file Blade halaman depan kamu
-        return view('backend.v_beranda.index', compact('recipes'));
+        return view('frontend.beranda', compact('resep_terbaru', 'total_resep', 'total_kategori'));
     }
 }

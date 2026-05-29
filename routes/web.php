@@ -42,10 +42,10 @@ Route::middleware(['auth'])->group(function () {
     
     // Halaman khusus setelah login
     Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
-    Route::get('backend/profile', [ProfileController::class, 'index'])->name('backend.profile');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('frontend.profile');
     
     // Fitur Create Recipe
-    Route::get('backend/create', [CreateRecipeController::class, 'index'])->name('backend.create');
-    Route::post('backend/recipe/store', [CreateRecipeController::class, 'store'])->name('backend.recipe.store');
+    Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
+    Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
     
 });

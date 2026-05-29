@@ -36,7 +36,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('backend.login') }}" method="post">
+            <form action="{{ route('login.proses') }}" method="post">
                 @csrf
 
                 <label>Email</label>

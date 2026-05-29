@@ -12,7 +12,7 @@ class KategoriController extends Controller
         $recipes = \App\Models\Recipe::where('kategori_id', 1)->get();
 
         // 2. Koki menyerahkan piringnya ke pelayan menggunakan compact('recipes')
-        return view('backend.v_kategori.k-makanan', compact('recipes'));
+        return view('frontend.v_kategori.k-makanan', compact('recipes'));
     }
     public function minuman()
     {
@@ -20,7 +20,7 @@ class KategoriController extends Controller
         $recipes = \App\Models\Recipe::where('kategori_id', 2)->get();
 
         // 2. Koki menyerahkan piringnya ke pelayan menggunakan compact('recipes')
-        return view('backend.v_kategori.k-minuman', compact('recipes'));
+        return view('frontend.v_kategori.k-minuman', compact('recipes'));
     }
     public function dessert()
     {
@@ -28,6 +28,6 @@ class KategoriController extends Controller
         $recipes = \App\Models\Recipe::where('kategori_id', 3)->get();
 
         // 2. Koki menyerahkan piringnya ke pelayan menggunakan compact('recipes')
-        return view('backend.v_kategori.k-dessert', compact('recipes'));
+        return view('frontend.v_kategori.k-dessert', compact('recipes'));
     }
 }

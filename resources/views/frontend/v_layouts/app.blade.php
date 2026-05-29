@@ -96,7 +96,7 @@
                                 Profile
                             </a>
 
-                            <form action="{{ route('backend.logout') }}" method="POST" style="margin: 0;">
+                            <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
                                 @csrf
                                 <button class="logout-btn">Logout</button>
                             </form>

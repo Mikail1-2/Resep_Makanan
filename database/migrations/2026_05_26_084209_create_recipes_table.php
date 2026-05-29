@@ -8,16 +8,18 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Ini KTP asli resep (Primary Key)
+
             $table->string('recipe_name');
-            $table->string('category');
-            $table->string('image'); // Kolom untuk menyimpan nama file gambar
+            // Ini fotokopi KTP dari tabel kategori Hilman (Foreign Key)
+            $table->integer('kategori_id');
+            $table->string('image');
             $table->text('ingredients');
             $table->text('instructions');
-            $table->timestamps();
+            $table->timestamps(); // Bikin kolom created_at dan updated_at otomatis
         });
     }
 

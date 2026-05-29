@@ -1,0 +1,81 @@
+/* --- CSS BARU (Taruh di file CSS eksternal frontend kamu) --- */
+
+/* Container Utama */
+.kategori-container {
+    padding: 20px;
+}
+
+/* Grid Pembungkus Kartu Resep - DIPERBAIKI */
+.recipe-grid {
+    display: grid;
+    /* Ganti aturan ini agar satu item tidak me-lebar horisontal */
+    grid-template-columns: repeat(auto-fill, 320px); /* Lebar kartu dibuat tetap 320px agar persegi */
+    justify-content: start; /* Grid menempel ke kiri, tidak ke tengah */
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Desain Kartu (Card) - DIPERBAIKI */
+.recipe-card {
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Hapus aturan width 100%, biarkan lebar grid yang mengatur */
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Desain Gambar - DIPERBAIKI agar Persegi dan Gedean */
+.recipe-image {
+    width: 100%;
+    /* Tinggi dibuat proporsional agar area gambar kelihatan persegi (grid 320px, gambar 300px) */
+    height: 300px; /* Ukuran gambar 'agak gedean' dan mendekati persegi */
+    object-fit: cover; /* Jaga agar gambar tidak gepeng */
+    display: block;
+}
+
+/* Bagian Teks di bawah gambar */
+.recipe-info {
+    padding: 18px;
+}
+
+.recipe-title {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+.recipe-publisher {
+    color: #888;
+    font-size: 14px;
+    margin: 0 0 15px 0;
+}
+
+/* Barisan Ikon */
+.recipe-stats {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.empty-message {
+    color: #e74c3c;
+    margin-top: 20px;
+    font-weight: 500;
+}

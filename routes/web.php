@@ -23,3 +23,5 @@ Route::post('backend/recipe/store', [CreateRecipeController::class, 'store'])->n
 Route::get('backend/makanan', [KategoriController::class, 'makanan'])->name('backend.makanan');
 Route::get('backend/minuman', [KategoriController::class, 'minuman'])->name('backend.minuman');
 Route::get('backend/dessert', [KategoriController::class, 'dessert'])->name('backend.dessert');
+// Rute untuk melihat detail resep (menangkap ID resep)
+Route::get('/resep/detail/{id}', [App\Http\Controllers\RecipeController::class, 'detail'])->name('resep.detail');

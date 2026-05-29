@@ -2,57 +2,108 @@
 
 @section('content')
 
-<div class="stats">
+<h1 style="margin-bottom:30px;">
+    Dashboard Admin
+</h1>
 
-    <div class="card">
-        <h3>Total Recipes</h3>
-        <h2>128</h2>
+<div class="metrics">
+
+    <div class="metric-card">
+        <h4>Total Recipe</h4>
+        <h2>120</h2>
     </div>
 
-    <div class="card">
-        <h3>Categories</h3>
-        <h2>12</h2>
+    <div class="metric-card">
+        <h4>Total User</h4>
+        <h2>45</h2>
     </div>
 
-    <div class="card">
-        <h3>Visitors</h3>
-        <h2>24K</h2>
+    <div class="metric-card">
+        <h4>Today's Visitor</h4>
+        <h2>230</h2>
     </div>
 
-    <div class="card">
-        <h3>Comments</h3>
-        <h2>842</h2>
+    <div class="metric-card">
+        <h4>Pending Approval</h4>
+        <h2>7</h2>
     </div>
 
 </div>
 
-<div class="recipes">
+<div class="row2">
 
-    <div class="recipe-card">
-        <img src="{{ asset('frontend/images/salad.jpg') }}">
+    <div class="card">
 
-        <div class="recipe-content">
-            <h3>Healthy Salad Bowl</h3>
-            <p>Fresh vegetables with creamy dressing.</p>
+        <h3>
+            Recent User
+        </h3>
+
+        <div class="log-item">
+            Hilman Saukani
         </div>
+
+        <div class="log-item">
+            Mikail Al Ghifary
+        </div>
+
+        <div class="log-item">
+            Dwi Ario
+        </div>
+
     </div>
 
-    <div class="recipe-card">
-        <img src="{{ asset('frontend/images/steak.jpg') }}">
+    <div class="card">
 
-        <div class="recipe-content">
-            <h3>Steak & Potato</h3>
-            <p>Juicy steak with crispy potato.</p>
+        <h3>
+            Recent Recipe
+        </h3>
+
+        <div class="log-item">
+            Nasi Goreng
         </div>
+
+        <div class="log-item">
+            Steak Potato
+        </div>
+
+        <div class="log-item">
+            Orange Juice
+        </div>
+
     </div>
 
-    <div class="recipe-card">
-        <img src="{{ asset('frontend/images/veganbowl.jpg') }}">
+</div>
 
-        <div class="recipe-content">
-            <h3>Hidup Jokowiiiiiiii</h3>
-            <p>Healthy vegan recipe with nutrition.</p>
+<div class="row2">
+
+    <div class="card">
+
+        <h3>
+            Comment Moderation
+        </h3>
+
+        <div class="comment-item">
+            Great recipe!
         </div>
+
+        <div class="comment-item">
+            Very delicious food
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+            Recipe Categories
+        </h3>
+
+        <div class="chart-container">
+
+            <canvas id="recipeChart"></canvas>
+
+        </div>
+
     </div>
 
 </div>

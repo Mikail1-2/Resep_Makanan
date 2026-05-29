@@ -10,7 +10,7 @@ class BerandaController extends Controller
     {
         if (Auth::check() && Auth::user()->role == '1') {
 
-            return view('backend.v_beranda.admin');
+            return view('backend.v_beranda.Admin');
 
         }
         return view('backend.v_beranda.index');

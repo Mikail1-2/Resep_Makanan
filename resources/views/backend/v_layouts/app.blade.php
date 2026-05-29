@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('backend/css/admin.css') }}">
     {{-- INI DIA COLOKAN AJAIBNYA! --}}
     @stack('styles')
 </head>
@@ -25,53 +25,42 @@
             </div>
 
             <ul>
+
                 <li>
-                    <a href="{{ route('backend.beranda') }}">Dashboard</a>
+                    <a href="{{ route('backend.beranda') }}">
+                        Dashboard
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ route('backend.recipe') }}">Recipes</a>
-                </li>
-                <li class="category-wrapper">
 
-                    <div class="category-toggle">
-                        Categories
-                    </div>
+                    <a href="#">
 
-                    <div class="subcategory">
+                        Approved Recipe
 
-                        <a href="{{ route('backend.makanan') }}">
-                            Makanan
-                        </a>
-
-                        <a href="{{ route('backend.minuman') }}">
-                            Minuman
-                        </a>
-
-                        <a href="{{ route('backend.dessert') }}">
-                            Dessert
-                        </a>
-
-                    </div>
+                    </a>
 
                 </li>
-                @auth
 
-                    @if(Auth::user()->role == '0')
-                        <li>
-                            <a href="{{ route('backend.create') }}">Create Recipe</a>
-                        </li>
-                        <li>
-                            <a href="#">My Recipes</a>
-                        </li>
-                    @endif
+                <li>
 
-                    @if(Auth::user()->role == '1')
-                        <li>
-                            <a href="#">Recipes Approval</a>
-                        </li>
-                    @endif
+                    <a href="#">
 
-                @endauth
+                        Manage Recipe
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        Manage User
+
+                    </a>
+
+                </li>
+
             </ul>
 
         </aside>
@@ -83,24 +72,25 @@
                 <div class="topbar">
                     <h1>Food Dashboard</h1>
 
-                    <div class="topbar-action" style="display: flex; gap: 15px; align-items: center;">
+                    <div class="topbar-action">
 
-                        @guest
-                            <a href="{{ route('backend.login') }}" class="profile-btn" style="text-decoration: none;">
-                                Login
-                            </a>
-                        @endguest
+                        <a href="{{ route('backend.profile') }}" class="profile-btn" style="text-decoration:none;">
 
-                        @auth
-                            <a href="{{ route('backend.profile') }}" class="profile-btn" style="text-decoration: none;">
-                                Profile
-                            </a>
+                            Profile
 
-                            <form action="{{ route('backend.logout') }}" method="POST" style="margin: 0;">
-                                @csrf
-                                <button class="logout-btn">Logout</button>
-                            </form>
-                        @endauth
+                        </a>
+
+                        <form action="{{ route('backend.logout') }}" method="POST" style="margin:0;">
+
+                            @csrf
+
+                            <button class="logout-btn">
+
+                                Logout
+
+                            </button>
+
+                        </form>
 
                     </div>
                 </div>

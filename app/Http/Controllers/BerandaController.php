@@ -18,10 +18,15 @@ class BerandaController extends Controller
 
     public function indexGuest()
     {
-        // Mengambil 6 resep terbaru dari database (diurutkan dari yang paling akhir dibuat)
-        $resep_terbaru = \App\Models\Recipe::orderBy('created_at', 'desc')->take(6)->get();
+        // Ambil 3 resep terbaru saja (biar pas dengan desain 3 kolom di gambarmu)
+        $resep_terbaru = \App\Models\Recipe::orderBy('created_at', 'desc')->take(3)->get();
         
-        // Membuka file beranda publik dan mengirimkan data resepnya
-        return view('frontend.beranda', compact('resep_terbaru'));
+        // Hitung total seluruh resep yang ada di database
+        $total_resep = \App\Models\Recipe::count();
+        
+        // Asumsi total kategori, bisa disesuaikan kalau kamu punya tabel Kategori
+        $total_kategori = 12; 
+
+        return view('frontend.beranda', compact('resep_terbaru', 'total_resep', 'total_kategori'));
     }
 }

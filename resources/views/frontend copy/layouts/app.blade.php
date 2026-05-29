@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resepku - Temukan Resep Favoritmu!</title>
 
-    <link rel="stylesheet" href="{{ asset('frontend/css/beranda.css') }}">
+    {{-- Kasih time() biar kebal dari cache browser --}}
+    <link rel="stylesheet" href="{{ asset('frontend/css/beranda.css') }}?v={{ time() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,17 +18,24 @@
 <body>
     <div class="container">
 
-        {{-- SIDEBAR PUBLIK (Lebih Bersih Tanpa Menu Admin) --}}
+        {{-- SIDEBAR PUBLIK & USER --}}
         <aside class="sidebar">
             <div class="logo">
                 <h2>Resepku</h2>
             </div>
 
             <ul>
+                {{-- 1. MENU UMUM: Bisa dilihat tamu dan semua role --}}
                 <li>
-                    <a href="{{ route('beranda.publik') }}">Beranda</a>
+                    <a href="{{ route('beranda.publik') }}">Dashboard</a>
                 </li>
                 
+                {{-- SEKARANG MENU RECIPES BISA DILIHAT TAMU --}}
+                <li>
+                    <a href="{{ route('backend.recipe') }}">Recipes</a>
+                </li>
+                
+                {{-- 2. MENU KATEGORI UMUM --}}
                 <li class="category-wrapper">
                     <div class="category-toggle">
                         Categories
@@ -39,11 +47,12 @@
                     </div>
                 </li>
 
-                {{-- Kalau user sudah login (Admin), kasih jalan pintas ke Dashboard Backend --}}
+                {{-- 3. MENU KHUSUS ROLE 1 (ADMIN) --}}
                 @auth
-                    <li style="margin-top: 20px;">
-                        <a href="{{ route('backend.beranda') }}" style="color: #3498db; font-weight: bold;">➡️ Masuk Dashboard</a>
-                    </li>
+                    @if(Auth::user()->role == '1')
+                        {{-- Disembunyikan dulu sementara waktu --}}
+                        {{-- <li><a href="#">Menu Admin (Coming Soon)</a></li> --}}
+                    @endif
                 @endauth
             </ul>
         </aside>
@@ -52,8 +61,8 @@
             
             {{-- TOPBAR PUBLIK --}}
             <div class="topbar">
-                <h1>Jelajahi Resep Nusantara</h1>
-
+                <h1>Food Dashboard</h1>
+                
                 <div class="topbar-action" style="display: flex; gap: 15px; align-items: center;">
                     
                     {{-- Tombol Login & Register untuk Tamu --}}

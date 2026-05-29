@@ -9,48 +9,19 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CreateRecipeController;
 use App\Http\Controllers\KategoriController;
 
-// =========================================================
-// 🟢 ZONA PUBLIK (Tamu / Belum Login)
-// URL bersih, bebas diakses siapapun tanpa awalan "/backend"
-// =========================================================
-
-// Halaman Beranda Guest (Bisa diakses lewat / atau /beranda)
 Route::get('/', [BerandaController::class, 'indexGuest'])->name('web.utama');
-Route::get('/beranda', [BerandaController::class, 'indexGuest'])->name('beranda.publik');
-
-// Autentikasi (Login & Register)
-// Hapus kata 'backend/' di URL biar pengunjung liatnya cuma /login dan /register
-Route::get('/login', [LoginController::class, 'loginBackend'])->name('login'); 
-Route::post('/login', [LoginController::class, 'authenticateBackend'])->name('login.proses');
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
-
-// Kategori & Detail Resep Publik
-// Pengunjung biasa ngga perlu liat URL backend/makanan
-Route::get('/makanan', [KategoriController::class, 'makanan'])->name('publik.makanan');
-Route::get('/minuman', [KategoriController::class, 'minuman'])->name('publik.minuman');
-Route::get('/dessert', [KategoriController::class, 'dessert'])->name('publik.dessert');
-Route::get('/resep/detail/{id}', [RecipeController::class, 'detail'])->name('resep.detail');
-
-
-// =========================================================
-// 🔴 ZONA PRIVAT / ADMIN (Wajib Login)
-// Otomatis nambah "/backend" di URL dan dijaga middleware 'auth'
-// =========================================================
-Route::prefix('backend')->middleware('auth')->group(function () {
-    
-    // URL jadinya: http://127.0.0.1:8000/backend/beranda
-    Route::get('/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
-    
-    // URL jadinya: http://127.0.0.1:8000/backend/profile
-    Route::get('/profile', [ProfileController::class, 'index'])->name('backend.profile');
-    
-    // Manajemen Resep (Khusus Admin/User yang udah login)
-    Route::get('/recipe', [RecipeController::class, 'index'])->name('backend.recipe');
-    Route::get('/create', [CreateRecipeController::class, 'index'])->name('backend.create');
-    Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('backend.recipe.store');
-    
-    // Logout ditaruh di sini karena cuma orang yang udah login yang bisa logout
-    Route::post('/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
-
-});
+Route::get('backend/login', [LoginController::class, 'loginBackend'])->name('backend.login');
+Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login');
+Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
+Route::get('backend/register', [RegisterController::class, 'index'])->name('register');
+Route::post('backend/register', [RegisterController::class, 'store'])->name('register.store');
+Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
+Route::get('backend/profile', [ProfileController::class, 'index'])->middleware('auth')->name('backend.profile');
+Route::get('backend/recipe', [RecipeController::class, 'index'])->name('backend.recipe');
+Route::get('backend/create', [CreateRecipeController::class, 'index'])->name('backend.create');
+Route::post('backend/recipe/store', [CreateRecipeController::class, 'store'])->name('backend.recipe.store');
+Route::get('backend/makanan', [KategoriController::class, 'makanan'])->name('backend.makanan');
+Route::get('backend/minuman', [KategoriController::class, 'minuman'])->name('backend.minuman');
+Route::get('backend/dessert', [KategoriController::class, 'dessert'])->name('backend.dessert');
+// Rute untuk melihat detail resep (menangkap ID resep)
+Route::get('/resep/detail/{id}', [App\Http\Controllers\RecipeController::class, 'detail'])->name('resep.detail');

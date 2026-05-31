@@ -38,7 +38,7 @@ class LoginController extends Controller
                 return redirect()->intended(route('backend.beranda'));
             } else {
                 // Selain Admin dilempar ke Halaman Utama/Guest
-                return redirect('/backend/beranda/');
+                return redirect()->route('web.utama');
             }
         }
 

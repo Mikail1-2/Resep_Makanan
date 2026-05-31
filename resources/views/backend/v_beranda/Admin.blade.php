@@ -1,4 +1,3 @@
-```php
 @extends('backend.v_layouts.app')
 
 @section('content')
@@ -280,4 +279,3 @@
     </div>
 
 @endsection
-```

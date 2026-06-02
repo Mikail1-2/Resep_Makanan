@@ -58,3 +58,60 @@ textarea.form-control {
 .publish-btn:hover {
     background: #ff7a21;
 }
+
+/* ========================= */
+/* CATEGORY + TAG ROW        */
+/* ========================= */
+
+.form-row{
+    display:flex;
+    gap:20px;
+}
+
+.half{
+    flex:1;
+}
+
+/* ========================= */
+/* TAG RESULT                */
+/* ========================= */
+
+.selected-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:12px;
+}
+
+.tag-badge{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 14px;
+
+    background:#e8fff0;
+    color:#22a559;
+
+    border-radius:999px;
+
+    font-size:14px;
+    font-weight:500;
+}
+
+.tag-remove{
+    border:none;
+    background:none;
+
+    cursor:pointer;
+
+    color:#22a559;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.tag-info{
+    display:block;
+    margin-top:10px;
+    color:#888;
+}

@@ -18,6 +18,7 @@ class Recipe extends Model
         'user_id',
         'kategori_id',
         'status',
+        'reject_reason',
         'image',
         'ingredients',
         'instructions'

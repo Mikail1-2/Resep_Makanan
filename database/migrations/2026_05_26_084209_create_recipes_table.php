@@ -16,6 +16,13 @@ return new class extends Migration {
             $table->string('recipe_name');
             // Ini fotokopi KTP dari tabel kategori Hilman (Foreign Key)
             $table->foreignId('kategori_id')->constrained('kategori')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('user');
+            $table->enum('status', [
+                'pending',
+                'approved',
+                'rejected'
+            ])->default('pending');
             $table->string('image');
             $table->text('ingredients');
             $table->text('instructions');

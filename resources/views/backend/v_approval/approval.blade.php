@@ -20,21 +20,6 @@
                     <th>Action</th>
                 </tr>
             </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>Nasi Goreng</td>
-                    <td>Makanan</td>
-                    <td>Pending</td>
-                    <td>
-                        <button class="approve-btn">Approve</button>
-                        <button class="reject-btn">Reject</button>
-                    </td>
-                </tr>
-
-            </tbody>
-
         </table>
 
     </div>

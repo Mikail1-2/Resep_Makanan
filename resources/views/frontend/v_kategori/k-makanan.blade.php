@@ -23,19 +23,6 @@
                     
                     {{-- 3. Nama Publisher --}}
                     <p class="recipe-publisher">Oleh: {{ $resep->user->nama ?? 'Anonim' }}</p>
-                    
-                    {{-- 4. Barisan Ikon Statistik (Rating, Favorit, Waktu) --}}
-                    <div class="recipe-stats">
-                        <span class="stat-item">
-                            ⭐ 4.5
-                        </span>
-                        <span class="stat-item">
-                            ❤️ 120
-                        </span>
-                        <span class="stat-item">
-                            ⏱️ 5 Min
-                        </span>
-                    </div>
                 </div>
 
             </div>

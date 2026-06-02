@@ -57,4 +57,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/approval',[RecipeController::class, 'approval'])->name('backend.approval');
     Route::post('/approval/{id}/approve',[RecipeController::class, 'approve'])->name('backend.approve');
+    Route::post('/approval/{id}/reject',[RecipeController::class, 'reject'])->name('backend.reject');
+
 });

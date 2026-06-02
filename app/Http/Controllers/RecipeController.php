@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Recipe;
+use Illuminate\Http\Request;
 
 
 class RecipeController extends Controller
@@ -62,5 +63,17 @@ class RecipeController extends Controller
         return redirect()
             ->route('backend.approval')
             ->with('success', 'Recipe approved successfully');
+    }
+    public function reject(Request $request, $id)
+    {
+        $recipe = Recipe::findOrFail($id);
+
+        $recipe->status = 'rejected';
+
+        $recipe->reject_reason = $request->reject_reason;
+
+        $recipe->save();
+
+        return redirect()->route('backend.approval');
     }
 }

@@ -19,7 +19,9 @@ class BerandaController extends Controller
     public function indexGuest()
     {
         // Ambil 3 resep terbaru saja (biar pas dengan desain 3 kolom di gambarmu)
-        $resep_terbaru = \App\Models\Recipe::orderBy('created_at', 'desc')->get();
+        $resep_terbaru = \App\Models\Recipe::where('status', 'approved')
+                           ->orderBy('created_at', 'desc')
+                           ->get();
 
         // Hitung total seluruh resep yang ada di database
         $total_resep = \App\Models\Recipe::count();

@@ -38,4 +38,42 @@ class RecipeController extends Controller
             return view('frontend.v_kategori.d-dessert', compact('resep'));
         }
     }
+
+    public function approval()
+    {
+        $recipes = Recipe::with([
+            'user',
+            'kategori'
+        ])
+            ->where('status', 'pending')
+            ->get();
+
+        return view('backend.v_approval.approval', compact('recipes'));
+    }
+
+    public function approve($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+
+        $recipe->status = 'approved';
+
+        $recipe->save();
+
+        return redirect()
+            ->route('backend.approval')
+            ->with('success', 'Recipe approved successfully');
+    }
+
+    public function reject($id)
+    {
+        // Cari resep berdasarkan ID
+        $resep = Recipe::findOrFail($id);
+        
+        // Ubah statusnya jadi rejected
+        $resep->status = 'rejected';
+        $resep->save();
+
+        // Kembalikan ke halaman sebelumnya dengan pesan
+        return back()->with('error', 'Resep telah ditolak wkwkwk.');
+    }
 }

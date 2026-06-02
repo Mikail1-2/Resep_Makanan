@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Recipe;
+use Illuminate\Http\Request;
 
 
 class RecipeController extends Controller
@@ -63,17 +64,16 @@ class RecipeController extends Controller
             ->route('backend.approval')
             ->with('success', 'Recipe approved successfully');
     }
-
-    public function reject($id)
+    public function reject(Request $request, $id)
     {
-        // Cari resep berdasarkan ID
-        $resep = Recipe::findOrFail($id);
-        
-        // Ubah statusnya jadi rejected
-        $resep->status = 'rejected';
-        $resep->save();
+        $recipe = Recipe::findOrFail($id);
 
-        // Kembalikan ke halaman sebelumnya dengan pesan
-        return back()->with('error', 'Resep telah ditolak wkwkwk.');
+        $recipe->status = 'rejected';
+
+        $recipe->reject_reason = $request->reject_reason;
+
+        $recipe->save();
+
+        return redirect()->route('backend.approval');
     }
 }

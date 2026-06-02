@@ -37,21 +37,26 @@
 
                         <td>
 
-                            <form action="{{ route('backend.approve', $recipe->id) }}" method="POST">
+                            <form action="{{ route('backend.approve', $recipe->id) }}" method="POST" style="display:inline">
 
                                 @csrf
 
-                                <button class="approve-btn">
+                                <button type="submit">
                                     Approve
                                 </button>
 
                             </form>
 
-                            <form action="{{ route('backend.reject', $data->id) }}" method="POST">
+                            <form action="{{ route('backend.reject', $recipe->id) }}" method="POST" style="display:inline">
+
                                 @csrf
-                                <button class="reject-btn">
+
+                                <input type="text" name="reject_reason" placeholder="Alasan reject">
+
+                                <button type="submit">
                                     Reject
                                 </button>
+
                             </form>
 
                         </td>

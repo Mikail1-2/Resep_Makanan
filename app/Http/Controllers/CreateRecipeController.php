@@ -29,6 +29,10 @@ class CreateRecipeController extends Controller
         // Tangkap semua isian form
         $data = $request->all();
 
+        $data['status'] = 'pending';    
+
+        $data['user_id'] = auth()->id();
+
         // Proses penyimpanan gambar ke folder Laragon
         if ($gambar = $request->file('image')) {
             // Tentukan folder penyimpanan (otomatis terbuat di dalam folder public)
@@ -48,6 +52,6 @@ class CreateRecipeController extends Controller
         Recipe::create($data);
 
         // Lempar balik ke halaman daftar resep (Pastikan nama route-nya sesuai)
-        return redirect()->route('web.utama')->with('success', 'Resep berhasil ditambahkan!');
+        return redirect()->route('web.utama')->with('success', 'Resep berhasil dikirim dan sedang menunggu persetujuan Admin!');
     }
 }

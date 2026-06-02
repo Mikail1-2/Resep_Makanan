@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CreateRecipeController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ForgotPasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,9 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// Forgot Password
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot.password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'kirim'])->name('password.email');
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +55,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
 
+    Route::get('/approval',[RecipeController::class, 'approval'])->name('backend.approval');
+    Route::post('/approval/{id}/approve',[RecipeController::class, 'approve'])->name('backend.approve');
 });

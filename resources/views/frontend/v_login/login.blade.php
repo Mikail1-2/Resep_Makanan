@@ -20,7 +20,7 @@
         <div class="login-card">
 
             <div class="back-wrapper">
-                <a href="{{ route('backend.beranda') }}" class="back-btn">
+                <a href="{{ route('web.utama') }}" class="back-btn">
                     ✕
                 </a>
             </div>
@@ -60,7 +60,7 @@
                 @enderror
 
                 <div class="forgot-wrapper">
-                    <a href="#" class="forgot-link">
+                    <a href="{{ route('forgot.password') }}" class="forgot-link">
                         Forgot Password?
                     </a>
                 </div>

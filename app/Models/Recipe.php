@@ -15,13 +15,20 @@ class Recipe extends Model
     // 2. Daftarkan kolom yang boleh diisi secara massal (Mass Assignment)
     protected $fillable = [
         'recipe_name',
+        'user_id',
         'kategori_id',
+        'status',
         'image',
         'ingredients',
-        'instructions',
+        'instructions'
     ];
 
     // Tambahkan fungsi ini di dalam class Recipe
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function kategori()
     {
         // Pastikan 'kategori_id' sesuai dengan nama kolom yang ada di tabel recipes kamu

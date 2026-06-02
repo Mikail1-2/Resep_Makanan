@@ -55,6 +55,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
 
-    Route::get('/approval', function () {return view('backend.v_approval.approval');})->name('backend.approval');
-
+    Route::get('/approval',[RecipeController::class, 'approval'])->name('backend.approval');
+    Route::post('/approval/{id}/approve',[RecipeController::class, 'approve'])->name('backend.approve');
 });

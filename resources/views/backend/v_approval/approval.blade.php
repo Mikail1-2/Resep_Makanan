@@ -23,15 +23,35 @@
 
             <tbody>
 
-                <tr>
-                    <td>Nasi Goreng</td>
-                    <td>Makanan</td>
-                    <td>Pending</td>
-                    <td>
-                        <button class="approve-btn">Approve</button>
-                        <button class="reject-btn">Reject</button>
-                    </td>
-                </tr>
+                @foreach($recipes as $recipe)
+
+                    <tr>
+
+                        <td>{{ $recipe->recipe_name }}</td>
+
+                        <td>{{ $recipe->kategori->name }}</td>
+
+                        <td>{{ $recipe->user->nama }}</td>
+
+                        <td>{{ $recipe->status }}</td>
+
+                        <td>
+
+                            <form action="{{ route('backend.approve', $recipe->id) }}" method="POST">
+
+                                @csrf
+
+                                <button class="approve-btn">
+                                    Approve
+                                </button>
+
+                            </form>
+
+                        </td>
+
+                    </tr>
+
+                @endforeach
 
             </tbody>
 

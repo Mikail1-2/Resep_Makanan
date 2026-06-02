@@ -10,6 +10,7 @@ use App\Http\Controllers\CreateRecipeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ForgotPasswordController;
 
+
 /*
 |--------------------------------------------------------------------------
 | 1. ZONA BEBAS (PUBLIK) - Tamu tidak akan dilempar ke halaman login
@@ -53,5 +54,7 @@ Route::middleware(['auth'])->group(function () {
     // Fitur Create Recipe
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
+
+    Route::get('/approval', function () {return view('backend.v_approval.approval');})->name('backend.approval');
 
 });

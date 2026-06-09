@@ -12,7 +12,6 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/beranda-admin.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    {{-- INI DIA COLOKAN AJAIBNYA! --}}
     @stack('styles')
 </head>
 
@@ -21,9 +20,10 @@
 
         <aside class="sidebar">
 
-            <div class="logo">
+            <a class="logo" href="{{ route('backend.beranda') }}">
+                <img src="{{ asset('image/Logo.png') }}" alt="Logo Resepku" class="logo-img">
                 <h2>Resepku</h2>
-            </div>
+            </a>
 
             <ul>
 
@@ -54,7 +54,7 @@
 
                 <li>
 
-                    <a href="#">
+                    <a href="{{ route('manage-user.index') }}">
 
                         Manage User
 
@@ -70,31 +70,25 @@
             {{-- TOPBAR CUMA MUNCUL KALAU RUTE SAAT INI ADALAH 'backend.beranda' --}}
             @if(Request::route()->getName() == 'backend.beranda')
 
-                <div class="topbar">
-                    <h1>Food Dashboard</h1>
+            <div class="topbar">
+                <h1>Food Dashboard</h1>
 
-                    <div class="topbar-action">
+                <div class="topbar-action">
 
-                        <a href="{{ route('frontend.profile') }}" class="profile-btn" style="text-decoration:none;">
+                    <form action="{{ route('logout') }}" method="POST" style="margin:0;">
 
-                            Profile
+                        @csrf
 
-                        </a>
+                        <button class="logout-btn">
 
-                        <form action="{{ route('logout') }}" method="POST" style="margin:0;">
+                            Logout
 
-                            @csrf
+                        </button>
 
-                            <button class="logout-btn">
+                    </form>
 
-                                Logout
-
-                            </button>
-
-                        </form>
-
-                    </div>
                 </div>
+            </div>
 
             @endif
 
@@ -105,7 +99,22 @@
         </main>
 
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="{{ asset('frontend/js/dropdown.js') }}"></script>
+
+    @if(session('success'))
+
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: "{{ session('success') }}"
+        });
+    </script>
+
+    @endif
 </body>
 
 </html>

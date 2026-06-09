@@ -61,7 +61,7 @@
                             <a href="{{ route('frontend.create') }}">Create Recipe</a>
                         </li>
                         <li>
-                            <a href="#">My Recipes</a>
+                            <a href="{{ route('frontend.myrecipe') }}">My Recipes</a>
                         </li>
                     @endif
 
@@ -92,16 +92,29 @@
                         @endguest
 
                         @auth
-                            <a href="{{ route('frontend.profile') }}" class="profile-btn" style="text-decoration: none;">
-                                Profile
+
+                            <a href="{{ route('frontend.profile') }}" class="navbar-profile">
+
+                                @if(Auth::user()->foto)
+
+                                    <img src="{{ asset('uploads/profile/' . Auth::user()->foto) }}" class="topbar-avatar">
+
+                                @else
+
+                                    <div class="navbar-avatar-letter">
+                                        {{ strtoupper(substr(Auth::user()->nama, 0, 1)) }}
+                                    </div>
+
+                                @endif
+
                             </a>
 
-                            <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                            <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button class="logout-btn">Logout</button>
                             </form>
-                        @endauth
 
+                        @endauth
                     </div>
                 </div>
 
@@ -115,6 +128,7 @@
 
     </div>
     <script src="{{ asset('frontend/js/dropdown.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>

@@ -48,15 +48,18 @@ Route::middleware(['auth'])->group(function () {
     // Halaman khusus setelah login
     Route::get('/beranda', [BerandaController::class, 'berandaUser'])->name('user.beranda');
     Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda');
-
-    Route::get('/profile', [ProfileController::class, 'index'])->name('frontend.profile');
-
+    // Halaman Profil
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('frontend.profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('frontend.profile.edit');
+    Route::post('/profile/update',[ProfileController::class, 'update'])->name('frontend.profile.update');
+    // Halaman my recipe
+    Route::get('/my-recipe', [RecipeController::class, 'myRecipe'])->name('frontend.myrecipe');
     // Fitur Create Recipe
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
 
-    Route::get('/approval',[RecipeController::class, 'approval'])->name('backend.approval');
-    Route::post('/approval/{id}/approve',[RecipeController::class, 'approve'])->name('backend.approve');
-    Route::post('/approval/{id}/reject',[RecipeController::class, 'reject'])->name('backend.reject');
+    Route::get('/approval', [RecipeController::class, 'approval'])->name('backend.approval');
+    Route::post('/approval/{id}/approve', [RecipeController::class, 'approve'])->name('backend.approve');
+    Route::post('/approval/{id}/reject', [RecipeController::class, 'reject'])->name('backend.reject');
 
 });

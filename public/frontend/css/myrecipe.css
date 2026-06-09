@@ -1,0 +1,79 @@
+.myrecipe-header {
+    margin-bottom: 30px;
+}
+
+.myrecipe-header h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.myrecipe-header p {
+    color: #777;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.recipe-card {
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.recipe-content {
+    padding: 20px;
+}
+
+.recipe-content h3 {
+    margin-bottom: 8px;
+}
+
+.category {
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.status {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.approved {
+    background: #d8f5df;
+    color: #1b8f3c;
+}
+
+.pending {
+    background: #fff3d8;
+    color: #d28a00;
+}
+
+.rejected {
+    background: #ffe1e1;
+    color: #d92c2c;
+}
+
+.reject-note {
+    margin-top: 12px;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+}

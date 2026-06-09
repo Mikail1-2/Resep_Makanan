@@ -1,23 +1,50 @@
 @extends('frontend.v_layouts.app')
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('frontend/css/profile.css') }}">
+@endpush
+
 @section('content')
 
-<div class="card">
+    <div class="profile-card">
 
-    <h2>User Profile</h2>
+        <div class="profile-header">
 
-    <br>
+            <div class="profile-avatar">
+                @if($user->foto)
+                    <img src="{{ asset('uploads/profile/' . $user->foto) }}" alt="Profile">
+                @else
+                    {{ strtoupper(substr($user->nama, 0, 1)) }}
+                @endif
+            </div>
 
-    <p>Name : {{ Auth::user()->nama }}</p>
+            <h2>{{ $user->nama }}</h2>
 
+        </div>
 
-    <br>
+        <div class="profile-info">
 
-    <h3>Favorite Recipes</h3>
+            <div class="info-item">
+                <span>Email</span>
+                <p>{{ $user->email }}</p>
+            </div>
 
-    <p>
-        Your favorite recipes will appear here.
-    </p>
+            <div class="info-item">
+                <span>No HP</span>
+                <p>{{ $user->hp }}</p>
+            </div>
 
-</div>
+            <div class="info-item">
+                <span>Total Recipe</span>
+                <p>{{ $totalRecipe }}</p>
+            </div>
+
+        </div>
+
+        <a href="{{ route('frontend.profile.edit') }}" class="edit-btn">
+            Edit Profile
+        </a>
+
+    </div>
 
 @endsection

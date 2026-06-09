@@ -179,7 +179,7 @@
 
         <button type="submit" class="publish-btn">
             Publish Recipe
-        </button>   
+        </button>
 
     </form>
 

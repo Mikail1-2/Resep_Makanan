@@ -9,6 +9,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CreateRecipeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\UserManagementController;
 
 
 /*
@@ -58,8 +59,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
 
-    Route::get('/approval', [RecipeController::class, 'approval'])->name('backend.approval');
-    Route::post('/approval/{id}/approve', [RecipeController::class, 'approve'])->name('backend.approve');
-    Route::post('/approval/{id}/reject', [RecipeController::class, 'reject'])->name('backend.reject');
+    Route::get('backend/approval',[RecipeController::class, 'approval'])->name('backend.approval');
+    Route::post('backend/approval/{id}/approve',[RecipeController::class, 'approve'])->name('backend.approve');
+    Route::post('backend/approval/{id}/reject',[RecipeController::class, 'reject'])->name('backend.reject');
+
+    // Manage User
+    Route::resource('manage-user', UserManagementController::class)->middleware('auth');
 
 });

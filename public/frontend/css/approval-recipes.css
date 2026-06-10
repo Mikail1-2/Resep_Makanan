@@ -1,43 +1,141 @@
+/* Styling Tabel Utama */
 .approval-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    table-layout: fixed; /* Mengunci total lebar tabel agar patuh pada persentase di bawah */
 }
+
+/* BAGI RATA LEBAR KOLOM (Total 100%)
+   Teks kiri jadi punya ruang bernapas, area action jadi pas di kanan
+*/
+.approval-table th:nth-child(1),
+.approval-table td:nth-child(1) {
+    width: 25%;
+} /* Recipe */
+.approval-table th:nth-child(2),
+.approval-table td:nth-child(2) {
+    width: 15%;
+} /* Category */
+.approval-table th:nth-child(3),
+.approval-table td:nth-child(3) {
+    width: 18%;
+} /* Submitted By */
+.approval-table th:nth-child(4),
+.approval-table td:nth-child(4) {
+    width: 12%;
+} /* Status */
+.approval-table th:nth-child(5),
+.approval-table td:nth-child(5) {
+    width: 30%;
+} /* Action (Lebih luas) */
 
 .approval-table th,
 .approval-table td {
-    padding: 14px;
+    padding: 14px 16px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle; /* Menjaga semua element sejajar lurus di tengah */
+    word-wrap: break-word; /* Menjaga teks panjang agar otomatis turun ke bawah */
 }
 
 .approval-table th {
     background: #fafafa;
     font-weight: 600;
+    color: #444;
 }
 
+/* Badge Status Pending */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: inline-block;
+}
+
+.status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* CONTAINER ACTION (Dibuat 100% biar tidak ada ruang kosong sisa) */
+.action-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%; /* MEMBESAR: Mengikuti lebar kolom 30% tadi */
+}
+
+/* Baris Tombol (Approve & Reject Berdampingan) */
+.button-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.button-row .form-inline {
+    flex: 1; /* Membagi tombol kiri & kanan rata 50:50 */
+    margin: 0;
+}
+
+/* Tombol Approve */
 .approve-btn {
-    background: #28a745;
+    width: 100%;
+    background: #2cc157;
     color: white;
     border: none;
-    padding: 8px 14px;
-    border-radius: 8px;
+    padding: 9px 14px;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: background 0.2s;
 }
 
 .approve-btn:hover {
-    background: #218838;
+    background: #229a43;
 }
 
+/* Tombol Reject */
 .reject-btn {
-    background: #dc3545;
+    width: 100%;
+    background: #e53e3e;
     color: white;
     border: none;
-    padding: 8px 14px;
-    border-radius: 8px;
+    padding: 9px 14px;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: background 0.2s;
 }
 
 .reject-btn:hover {
-    background: #c82333;
+    background: #c53030;
+}
+
+/* Kotak Komentar di Bawah Tombol */
+.comment-row {
+    width: 100%;
+}
+
+.reject-reason {
+    width: 100%; /* MEMBESAR: Lebarnya otomatis penuh sejajar dengan tombol di atasnya */
+    min-height: 70px; /* Tinggi yang pas, pas di mata dan muat banyak teks alasan */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    resize: vertical; /* Admin bisa ditarik ke bawah jika alasannya sepanjang kereta */
+    font-family: inherit;
+}
+
+.reject-reason:focus {
+    border-color: #ff8c42;
+    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.15);
 }

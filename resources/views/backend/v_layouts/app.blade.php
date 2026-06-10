@@ -101,7 +101,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="{{ asset('frontend/js/profile.js') }}"></script>
     <script src="{{ asset('frontend/js/dropdown.js') }}"></script>
 
     @if(session('success'))

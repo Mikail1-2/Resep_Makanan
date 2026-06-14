@@ -16,6 +16,7 @@
                 <tr>
                     <th>Recipe</th>
                     <th>Category</th>
+                    <th>Submitted By</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -33,31 +34,36 @@
 
                         <td>{{ $recipe->user->nama }}</td>
 
-                        <td>{{ $recipe->status }}</td>
+                        <td>
+                            <span class="status-badge {{ strtolower($recipe->status) }}">
+                                {{ $recipe->status }}
+                            </span>
+                        </td>
 
                         <td>
 
-                            <form action="{{ route('backend.approve', $recipe->id) }}" method="POST" style="display:inline">
+                            <div class="action-container">
 
-                                @csrf
+                                <div class="button-row">
+                                    <form action="{{ route('backend.approve', $recipe->id) }}" method="POST"
+                                        class="form-inline">
+                                        @csrf
+                                        <button type="submit" class="approve-btn">Approve</button>
+                                    </form>
 
-                                <button type="submit">
-                                    Approve
-                                </button>
+                                    <form action="{{ route('backend.reject', $recipe->id) }}" method="POST" class="form-inline"
+                                        id="reject-form-{{ $recipe->id }}">
+                                        @csrf
+                                        <button type="submit" class="reject-btn">Reject</button>
+                                    </form>
+                                </div>
 
-                            </form>
+                                <div class="comment-row">
+                                    <textarea name="reject_reason" form="reject-form-{{ $recipe->id }}" class="reject-reason"
+                                        placeholder="Enter rejection reason..." required rows="3"></textarea>
+                                </div>
 
-                            <form action="{{ route('backend.reject', $recipe->id) }}" method="POST" style="display:inline">
-
-                                @csrf
-
-                                <input type="text" name="reject_reason" placeholder="Alasan reject">
-
-                                <button type="submit">
-                                    Reject
-                                </button>
-
-                            </form>
+                            </div>
 
                         </td>
 

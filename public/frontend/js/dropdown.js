@@ -110,3 +110,72 @@ function removeTag(index) {
 
     renderTags();
 }
+
+/* =====================================
+    SEARCH USER
+===================================== */
+
+const userSearch = document.getElementById("userSearch");
+const userTable = document.getElementById("userTable");
+
+if (userSearch && userTable) {
+    userSearch.addEventListener("keyup", function () {
+        let keyword = this.value.toLowerCase();
+
+        let rows = userTable.getElementsByTagName("tr");
+
+        for (let row of rows) {
+            let text = row.textContent.toLowerCase();
+
+            row.style.display = text.includes(keyword) ? "" : "none";
+        }
+    });
+}
+
+/* =====================================
+    SEARCH ADMIN
+===================================== */
+
+const adminSearch = document.getElementById("adminSearch");
+const adminTable = document.getElementById("adminTable");
+
+if (adminSearch && adminTable) {
+    adminSearch.addEventListener("keyup", function () {
+        let keyword = this.value.toLowerCase();
+
+        let rows = adminTable.getElementsByTagName("tr");
+
+        for (let row of rows) {
+            let text = row.textContent.toLowerCase();
+
+            row.style.display = text.includes(keyword) ? "" : "none";
+        }
+    });
+}
+
+/* =====================================
+   DELETE CONFIRMATION
+===================================== */
+
+const deleteForms = document.querySelectorAll(".delete-form");
+
+deleteForms.forEach((form) => {
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: "Hapus Data?",
+            text: "Data yang dihapus tidak dapat dikembalikan!",
+            icon: "warning",
+
+            showCancelButton: true,
+
+            confirmButtonText: "Ya, Hapus",
+            cancelButtonText: "Batal",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+});

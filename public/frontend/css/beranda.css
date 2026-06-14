@@ -312,55 +312,44 @@ body {
     }
 }
 
-/* =========================================
-   RECIPE TAGS (BADGE KATEGORI)
-   ========================================= */
-.recipe-tags {
+.navbar-profile {
     display: flex;
-    flex-wrap: wrap; /* Kalau tag-nya banyak, otomatis turun ke bawah */
-    gap: 8px; /* Jarak antar tag */
-    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
-.tag-green {
-    background-color: #d4edda; /* Warna background hijau muda */
-    color: #155724; /* Warna teks hijau gelap */
-    padding: 5px 12px;
-    border-radius: 20px; /* Membuat ujungnya membulat seperti pil */
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: capitalize; /* Huruf depannya otomatis besar */
-}
+.topbar-avatar {
+    width: 50px !important;
+    height: 50px !important;
 
-/* Update CSS ini */
+    min-width: 60px;
+    max-width: 60px;
 
-.dropdown-check-list { 
-    display: inline-block; 
-    position: relative; 
-    width: 250px;       /* Ini yang bikin dia gak kelebaran lagi */
-    flex: 0 0 auto;    /* Biar nggak makin ciut kalau layarnya sempit */
-}
+    min-height: 60px;
+    max-height: 60px;
 
-.anchor { 
-    background-color: #fff; 
-    border: 1px solid #ccc; 
-    padding: 10px; 
-    cursor: pointer; 
-    border-radius: 5px; 
-    width: 100%;         /* Ngikutin lebar kontainer parent-nya */
-    box-sizing: border-box; /* Biar padding nggak bikin kotak jadi melar keluar */
+    border-radius: 50% !important;
+
+    object-fit: cover;
+
+    border: 3px solid #ff8113;
+
     display: block;
 }
 
-.items { 
-    display: none; 
-    position: absolute; 
-    background: #fff; 
-    border: 1px solid #ccc; 
-    width: 100%;         /* Biar lebarnya pas sama anchor */
-    box-sizing: border-box; /* Biar border nggak ngerusak layout */
-    z-index: 1000;       /* Biar nongol di paling depan */
-    max-height: 250px;   /* Dikasih agak tinggi biar nggak perlu scroll-scroll amat */
-    overflow-y: auto; 
-    padding: 10px; 
+.navbar-avatar-letter {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #ff8c42;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
 }

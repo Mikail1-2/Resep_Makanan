@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -79,5 +79,17 @@ class RecipeController extends Controller
         $recipe->save();
 
         return redirect()->route('backend.approval');
+    }
+    public function myRecipe()
+    {
+        $recipes = Recipe::with('kategori')
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->get();
+
+        return view(
+            'frontend.v_myrecipe.myrecipe',
+            compact('recipes')
+        );
     }
 }

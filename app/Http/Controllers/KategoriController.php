@@ -2,38 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Models\Recipe;
+use App\Models\Tag;
+
 class KategoriController extends Controller
 {
-    public function makanan()
+    // --- FUNGSI MAKANAN (Kategori ID: 1) ---
+    public function makanan(Request $request)
     {
-        // 1. Koki memasak data dari database (kategori 1 DAN status wajib approved)
-        $recipes = \App\Models\Recipe::where('kategori_id', 1)
-                                     ->where('status', 'approved')
-                                     ->get();
+        $tags = Tag::all();
+        // Siapkan "Panci" utama
+        $query = Recipe::where('kategori_id', 1)->where('status', 'approved');
 
-        // 2. Koki menyerahkan piringnya ke pelayan
-        return view('frontend.v_kategori.k-makanan', compact('recipes'));
+        // Saring kalau ada pencarian
+        if ($request->filled('search')) {
+            $query->where('recipe_name', 'like', '%' . $request->search . '%');
+        }
+
+        // Saring kalau ada filter tag
+        if ($request->filled('tags')) {
+            $query->whereHas('tags', function ($q) use ($request) {
+                $q->whereIn('name', $request->tags);
+            });
+        }
+
+        $recipes = $query->get();
+        return view('frontend.v_kategori.k-makanan', compact('recipes', 'tags'));
     }
 
-    public function minuman()
+    // --- FUNGSI MINUMAN (Kategori ID: 2) ---
+    public function minuman(Request $request)
     {
-        // 1. Koki memasak data dari database (kategori 2 DAN status wajib approved)
-        $recipes = \App\Models\Recipe::where('kategori_id', 2)
-                                     ->where('status', 'approved')
-                                     ->get();
+        $tags = Tag::all();
+        $query = Recipe::where('kategori_id', 2)->where('status', 'approved');
 
-        // 2. Koki menyerahkan piringnya ke pelayan
-        return view('frontend.v_kategori.k-minuman', compact('recipes'));
+        if ($request->filled('search')) {
+            $query->where('recipe_name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('tags')) {
+            $query->whereHas('tags', function ($q) use ($request) {
+                $q->whereIn('name', $request->tags);
+            });
+        }
+
+        $recipes = $query->get();
+        return view('frontend.v_kategori.k-minuman', compact('recipes', 'tags'));
     }
 
-    public function dessert()
+    // --- FUNGSI DESSERT (Kategori ID: 3) ---
+    public function dessert(Request $request)
     {
-        // 1. Koki memasak data dari database (kategori 3 DAN status wajib approved)
-        $recipes = \App\Models\Recipe::where('kategori_id', 3)
-                                     ->where('status', 'approved')
-                                     ->get();
+        $tags = Tag::all();
+        $query = Recipe::where('kategori_id', 3)->where('status', 'approved');
 
-        // 2. Koki menyerahkan piringnya ke pelayan
-        return view('frontend.v_kategori.k-dessert', compact('recipes'));
+        if ($request->filled('search')) {
+            $query->where('recipe_name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('tags')) {
+            $query->whereHas('tags', function ($q) use ($request) {
+                $q->whereIn('name', $request->tags);
+            });
+        }
+
+        $recipes = $query->get();
+        return view('frontend.v_kategori.k-dessert', compact('recipes', 'tags'));
     }
 }

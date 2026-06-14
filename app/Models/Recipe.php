@@ -35,4 +35,9 @@ class Recipe extends Model
         // Pastikan 'kategori_id' sesuai dengan nama kolom yang ada di tabel recipes kamu
         return $this->belongsTo(Kategori::class, 'kategori_id');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'recipe_tag');
+    }
 }

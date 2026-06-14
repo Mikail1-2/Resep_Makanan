@@ -9,7 +9,11 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        return view('frontend.v_recipes.recipes');
+        $recipes = Recipe::where('status', 'approved')
+                                 ->orderBy('created_at', 'desc')
+                                 ->get();
+
+    return view('frontend.v_recipes.recipes', compact('recipes'));
     }
     public function kategori($nama_kategori)
     {

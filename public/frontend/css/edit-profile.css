@@ -67,6 +67,7 @@
     align-items: center;
     cursor: pointer;
     font-size: 14px;
+    font-weight: bold;
     gap: 8px;
     border: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -105,6 +106,19 @@
     background: #dc2626;
     transform: translateY(-2px);
 }
+
+.remove-photo-btn:disabled {
+    background: #d1d5db;
+    color: #6b7280;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.remove-photo-btn:disabled:hover {
+    transform: none;
+    background: #d1d5db;
+}
+
 .form-group {
     margin-bottom: 22px;
 }

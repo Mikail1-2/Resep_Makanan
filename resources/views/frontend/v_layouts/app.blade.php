@@ -20,9 +20,10 @@
 
         <aside class="sidebar">
 
-            <div class="logo">
+            <a class="logo" href="{{ route('web.utama') }}">
+                <img src="{{ asset('image/Logo.png') }}" alt="Logo Resepku" class="logo-img">
                 <h2>Resepku</h2>
-            </div>
+            </a>
 
             <ul>
                 <li>
@@ -127,8 +128,23 @@
         </main>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('frontend/js/dropdown.js') }}"></script>
-    @stack('scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    @if(session('success'))
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '{{ session("success") }}',
+                    confirmButtonColor: '#ff8c42'
+                });
+            });
+        </script>
+    @endif
 </body>
 
 </html>

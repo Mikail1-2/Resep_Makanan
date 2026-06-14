@@ -103,20 +103,22 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="{{ asset('frontend/js/profile.js') }}"></script>
     <script src="{{ asset('frontend/js/dropdown.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @if(session('success'))
-
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: "{{ session('success') }}"
-        });
-    </script>
-
+        <script>
+            Swal.fire({
+                icon: 'success', // Ini yang bikin gambar ceklis hijau
+                title: 'Berhasil!',
+                text: '{{ session("success") }}',
+                confirmButtonColor: '#ff8c42', // Warna tombol disamakan dengan tema DAA
+                timer: 3000 // Otomatis hilang dalam 3 detik (opsional)
+            });
+        </script>
     @endif
+
 </body>
 
 </html>

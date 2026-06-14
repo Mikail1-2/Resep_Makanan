@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 // 1. Tambahkan dua baris ini untuk memanggil Request dan Model Recipe
 use Illuminate\Http\Request;
 use App\Models\Recipe;
+use App\Models\Tag;
+use App\Models\Kategori;
 
 class CreateRecipeController extends Controller
 {
     // Fungsi untuk menampilkan halaman form (Sudah ada)
     public function index()
     {
-        return view('frontend.v_recipes.create');
+        $tags = Tag::all();
+        $kategoris = Kategori::all(); // Anggap kategorimu juga diambil dari database
+
+        // Kirim datanya ke file Blade pakai compact()
+        return view('frontend.v_recipes.create', compact('tags', 'kategoris'));
     }
 
     // 2. Tambahkan fungsi store() ini untuk memproses form
@@ -19,17 +25,25 @@ class CreateRecipeController extends Controller
     {
         // Validasi inputan agar tidak ada yang kosong
         $request->validate([
-            'recipe_name' => 'required',
+            'recipe_name' => 'required|string|max:255',
             'kategori_id' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Wajib gambar, maks 2MB
+            'tags'        => 'required|array',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'ingredients' => 'required',
             'instructions' => 'required',
+        ], [
+            // Opsional: Pesan error kustom (biar bahasa Indonesia)
+            'recipe_name.required' => 'Nama resep wajib diisi!',
+            'kategori_id.required' => 'Kategori wajib dipilih!',
+            'tags.required' => 'Tag wajib dipilih!',
+            'image.required' => 'Gambar makanan wajib diupload!',
+            'ingredients.required' => 'Bahan-bahan tidak boleh kosong!',
+            'instructions.required' => 'Cara membuat wajib diisi!'
         ]);
-
         // Tangkap semua isian form
         $data = $request->all();
 
-        $data['status'] = 'pending';    
+        $data['status'] = 'pending';
 
         $data['user_id'] = auth()->id();
 
@@ -49,7 +63,11 @@ class CreateRecipeController extends Controller
         }
 
         // Simpan semua data ke tabel recipes
-        Recipe::create($data);
+        $recipe = Recipe::create($data);
+
+        if ($request->has('tags')) {
+        $recipe->tags()->attach($request->tags); 
+        }
 
         // Lempar balik ke halaman daftar resep (Pastikan nama route-nya sesuai)
         return redirect()->route('web.utama')->with('success', 'Resep berhasil dikirim dan sedang menunggu persetujuan Admin!');

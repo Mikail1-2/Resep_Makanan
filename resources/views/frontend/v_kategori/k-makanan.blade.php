@@ -23,7 +23,7 @@
                     
                     {{-- 3. Nama Publisher --}}
                     <p class="recipe-publisher">Oleh: {{ $resep->user->nama ?? 'Anonim' }}</p>
-                </div>
+                </div   >
 
             </div>
         @endforeach

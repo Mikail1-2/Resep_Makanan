@@ -168,7 +168,7 @@ body {
 
 .recipes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 1fr); 
     gap: 25px;
 }
 
@@ -251,6 +251,57 @@ body {
     background: #ffefe2;
     color: #ff8c42;
 }
+
+/* =========================================
+   TAMBAHAN UNTUK PENCARIAN & FILTER
+   ========================================= */
+.search-filter-container {
+    margin: 0 0 30px 0;
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 18px;
+    border: 1px solid #ececec;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.sort-select {
+    width: 200px;
+    padding: 12px 18px;
+    border-radius: 18px;
+    border: 1px solid #ececec;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.search-btn {
+    background-color: #ff8c42;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+    font-family: inherit;
+}
+
+.search-btn:hover {
+    background-color: #ff7a21;
+}
+
+/* --- Paste kodingan di atas tepat sebelum baris @media di bawah ini --- */
+/* @media (max-width: 900px) { ... } */
+
 @media (max-width: 900px) {
     .container {
         flex-direction: column;

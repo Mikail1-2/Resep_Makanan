@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="kategori-container">
-    <h2>Kategori: Minuman 🍹</h2>
+    <h2>Resep Minuman </h2>
     
     <div class="recipe-grid">
         @foreach($recipes as $resep)
@@ -23,13 +23,6 @@
                     
                     {{-- Nama Publisher --}}
                     <p class="recipe-publisher">Oleh: {{ $resep->user->nama ?? 'Anonim' }}</p>
-                    
-                    {{-- Barisan Ikon Statistik --}}
-                    <div class="recipe-stats">
-                        <span class="stat-item">⭐ 4.3</span>
-                        <span class="stat-item">❤️ 19</span>
-                        <span class="stat-item">⏱️ 5 Min</span>
-                    </div>
                 </div>
 
             </div>

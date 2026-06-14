@@ -42,6 +42,7 @@ class BerandaController extends Controller
 
         // Asumsi total kategori, bisa disesuaikan kalau kamu punya tabel Kategori
         $total_kategori = 12;
+        $tags = Tag::all();
 
         return view(
             'frontend.v_beranda.index',
@@ -49,7 +50,7 @@ class BerandaController extends Controller
                 'resep_terbaru',
                 'total_resep',
                 'total_kategori',
-                'tags'
+                'tags',
             )
         );
     }

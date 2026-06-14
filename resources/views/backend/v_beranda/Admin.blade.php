@@ -2,195 +2,112 @@
 
 @section('content')
 
-    <div class="metrics">
+<div class="metrics">
 
-        <div class="metric-card">
+    <div class="metric-card">
 
-            <div class="metric-top">
+        <div class="metric-top">
 
-                <div class="metric-icon">
-                    🍜
-                </div>
-
+            <div class="metric-icon">
+                🍜
             </div>
 
-            <h4>Total Recipe</h4>
-
-            <h2>120</h2>
-
         </div>
 
-        <div class="metric-card">
+        <h4>Total Recipe</h4>
 
-            <div class="metric-top">
-
-                <div class="metric-icon">
-                    👤
-                </div>
-
-            </div>
-
-            <h4>Total User</h4>
-
-            <h2>45</h2>
-
-        </div>
-
-        <div class="metric-card">
-
-            <div class="metric-top">
-
-                <div class="metric-icon">
-                    👁️
-                </div>
-
-            </div>
-
-            <h4>Today's Visitor</h4>
-
-            <h2>230</h2>
-
-        </div>
-
-        <div class="metric-card">
-
-            <div class="metric-top">
-
-                <div class="metric-icon">
-                    ⏳
-                </div>
-
-            </div>
-
-            <h4>Pending Approval</h4>
-
-            <h2>7</h2>
-
-        </div>
-
-        <div class="metric-card">
-
-            <h4>Total User</h4>
-
-            <h2>45</h2>
-
-        </div>
-
-        <div class="metric-card">
-
-            <h4>Today's Visitor</h4>
-
-            <h2>230</h2>
-
-        </div>
-
-        <div class="metric-card">
-
-            <h4>Pending Approval</h4>
-
-            <h2>7</h2>
-
-        </div>
+        <h2>{{ $totalRecipe }}</h2>
 
     </div>
 
-    <div class="row2">
+    <div class="metric-card">
 
-        <div class="card">
+        <div class="metric-top">
 
-            <h3>
-                Recent User
-            </h3>
-
-            <div class="user-item">
-
-                <div class="user-info">
-
-                    <h4>Hilman Saukani</h4>
-
-                    <small>User</small>
-
-                </div>
-
+            <div class="metric-icon">
+                👤
             </div>
 
-            <div class="user-item">
+        </div>
 
-                <div class="user-info">
+        <h4>Total User</h4>
 
-                    <h4>Mikail Al Ghifary</h4>
+        <h2>{{ $totalUser }}</h2>
 
-                    <small>User</small>
+    </div>
 
-                </div>
+    <div class="metric-card">
 
+        <div class="metric-top">
+
+            <div class="metric-icon">
+                👁️
             </div>
 
-            <div class="user-item">
+        </div>
 
-                <div class="user-info">
+        <h4>Today's Visitor</h4>
 
-                    <h4>Dwi Ario</h4>
+        <h2>230</h2>
 
-                    <small>User</small>
+    </div>
 
-                </div>
+    <div class="metric-card">
+
+        <div class="metric-top">
+
+            <div class="metric-icon">
+                ⏳
+            </div>
+
+        </div>
+
+        <h4>Pending Approval</h4>
+
+        <h2>{{ $totalPending }}</h2>
+
+    </div>
+</div>
+
+<div class="row2">
+
+    <div class="card">
+
+        <h3>
+            Recent User
+        </h3>
+
+        <div class="user-item">
+
+            <div class="user-info">
+
+                <h4>Hilman Saukani</h4>
+
+                <small>User</small>
 
             </div>
 
         </div>
 
-        <div class="card">
+        <div class="user-item">
 
-            <h3>
-                Recent Recipe
-            </h3>
+            <div class="user-info">
 
-            <div class="recipe-item">
+                <h4>Mikail Al Ghifary</h4>
 
-                <div>
-
-                    <h4>Nasi Goreng</h4>
-
-                    <small>Makanan</small>
-
-                </div>
-
-                <span class="recipe-status">
-                    Published
-                </span>
+                <small>User</small>
 
             </div>
 
-            <div class="recipe-item">
+        </div>
 
-                <div>
+        <div class="user-item">
 
-                    <h4>Orange Juice</h4>
+            <div class="user-info">
 
-                    <small>Minuman</small>
+                <h4>Dwi Ario</h4>
 
-                </div>
-
-                <span class="recipe-status">
-                    Published
-                </span>
-
-            </div>
-
-            <div class="recipe-item">
-
-                <div>
-
-                    <h4>Ice Cream</h4>
-
-                    <small>Dessert</small>
-
-                </div>
-
-                <span class="recipe-status">
-                    Pending
-                </span>
+                <small>User</small>
 
             </div>
 
@@ -198,84 +115,114 @@
 
     </div>
 
-    <div class="row2">
+    <div class="card">
 
-        <div class="card">
+        <h3>
+            Recent Recipe
+        </h3>
 
-            <h3>
-                Comment Moderation
-            </h3>
+        <div class="recipe-item">
 
-            <div class="comment-item">
-                Great Recipe!
+            <div>
+
+                <h4>Nasi Goreng</h4>
+
+                <small>Makanan</small>
+
             </div>
 
-            <div class="comment-item">
-                Delicious Food!
-            </div>
+            <span class="recipe-status">
+                Published
+            </span>
 
         </div>
 
-        <div class="card">
+        <div class="recipe-item">
 
-            <h3>
-                Recipe Categories
-            </h3>
+            <div>
 
-            <div class="chart-container">
+                <h4>Orange Juice</h4>
 
-                <canvas id="recipeChart"></canvas>
+                <small>Minuman</small>
 
             </div>
 
+            <span class="recipe-status">
+                Published
+            </span>
+
         </div>
-        <script>
 
-            const ctx = document.getElementById('recipeChart');
+        <div class="recipe-item">
 
-            new Chart(ctx, {
+            <div>
 
-                type: 'pie',
+                <h4>Ice Cream</h4>
 
-                data: {
+                <small>Dessert</small>
 
-                    labels: ['Makanan', 'Minuman', 'Dessert'],
+            </div>
 
-                    datasets: [{
+            <span class="recipe-status">
+                Pending
+            </span>
 
-                        data: [45, 25, 30],
+        </div>
 
-                        backgroundColor: [
-                            '#ff8c42',
-                            '#ffa94d',
-                            '#ffd8a8'
-                        ],
-
-                        borderWidth: 0
-
-                    }]
-
-                },
-
-                options: {
-
-                    responsive: true,
-
-                    plugins: {
-
-                        legend: {
-
-                            position: 'bottom'
-
-                        }
-
-                    }
-
-                }
-
-            });
-
-        </script>
     </div>
+
+    <div class="card">
+
+        <h3>
+            Comment Moderation
+        </h3>
+
+        <div class="comment-item">
+            Great Recipe!
+        </div>
+
+        <div class="comment-item">
+            Delicious Food!
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+            Recipe Categories
+        </h3>
+
+        <div class="chart-container">
+
+            <canvas id="recipeChart"></canvas>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('recipeChart');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Makanan', 'Minuman', 'Dessert'],
+            datasets: [{
+                data: [
+                    {{ $chartMakanan }},
+                    {{ $chartMinuman }},
+                    {{ $chartDessert }}
+                ],
+                backgroundColor: ['#ff8c42', '#ffa94d', '#ffd8a8'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'bottom' } }
+        }
+    });
+</script>
 
 @endsection

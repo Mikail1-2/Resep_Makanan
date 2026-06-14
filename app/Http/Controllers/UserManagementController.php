@@ -43,6 +43,11 @@ class UserManagementController extends Controller
             'totalAdmins' => $admins->count(),
 
         ]);
+
+        return view('backend.v_beranda.Admin', [
+            'judul' => 'Dashboard',
+            'totalUser' => User::count(),
+        ]);
     }
 
     /**

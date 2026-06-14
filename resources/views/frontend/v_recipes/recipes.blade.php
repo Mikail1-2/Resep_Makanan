@@ -1,31 +1,46 @@
+{{-- 1. WAJIB ADA: Ini yang memanggil layout dan semua CSS kamu --}}
 @extends('frontend.v_layouts.app')
 
 @section('content')
 
-<h2 style="margin-bottom: 25px;">
-    Recipes
-</h2>
-
-<div class="recipes">
-
-    <div class="recipe-card">
-        <img src="{{ asset('frontend/images/salad.jpg') }}">
-
-        <div class="recipe-content">
-            <h3>Healthy Salad Bowl</h3>
-            <p>Fresh vegetables with creamy dressing.</p>
-        </div>
+    <div class="topbar">
+        <h1>Resepku</h1>
     </div>
 
-    <div class="recipe-card">
-        <img src="{{ asset('frontend/images/steak.jpg') }}">
+    {{-- 2. Kodingan recipes-nya taruh di dalam sini --}}
+    <div class="recipes">
 
-        <div class="recipe-content">
-            <h3>Steak & Potato</h3>
-            <p>Juicy steak with crispy potato.</p>
-        </div>
+        @foreach($recipes as $data)
+
+            <a href="{{ route('resep.detail', $data->id) }}" style="text-decoration:none; color:inherit;">
+
+                <div class="recipe-card">
+
+                    <img src="{{ asset('uploads/recipes/' . $data->image) }}" alt="{{ $data->recipe_name }}">
+
+                    <div class="recipe-content">
+
+                        <h3>{{ $data->recipe_name }}</h3>
+
+                        <div class="recipe-tags" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+
+                            @foreach($data->tags as $tag)
+                                <span class="tag-green">
+                                    {{ $tag->name }}
+                                </span>
+                            @endforeach
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        @endforeach
+
     </div>
 
-</div>
-
+    {{-- 3. WAJIB ADA: Penutup --}}
 @endsection

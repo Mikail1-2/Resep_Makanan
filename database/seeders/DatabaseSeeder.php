@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Kategori;
+use App\Models\Tag;
 
 class DatabaseSeeder extends Seeder
 {
@@ -59,6 +60,42 @@ class DatabaseSeeder extends Seeder
 
         Kategori::create([
             'name' => 'dessert'
+        ]); 
+
+        Tag::create([
+            'name' => 'Goreng'
+        ]);
+
+        Tag::create([
+            'name' => 'Rebus'
+        ]);
+
+        Tag::create([
+            'name' => 'Bakar'
+        ]);
+
+        Tag::create([
+            'name' => 'Kukus'
+        ]);
+
+         Tag::create([
+            'name' => 'Tumis'
+        ]);
+
+        Tag::create([
+            'name' => 'CepatSaji'
+        ]);
+
+        Tag::create([
+            'name' => 'Tradisional'
+        ]);
+
+        Tag::create([
+            'name' => 'Vegetarian'
+        ]);
+
+        Tag::create([
+            'name' => 'Panggang '
         ]);
     }
 }

@@ -2,59 +2,95 @@
 
 @section('content')
 
-<div class="stats">
+    <div class="search-filter-container">
+        <form action="{{ route('web.utama') }}" method="GET" class="search-form"
+            style="display:flex;gap:10px;align-items:center;">
 
-    <div class="card">
-        <h3>Total Recipes</h3>
-        <h2>128</h2>
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari resep makanan..."
+                class="search-input">
+
+            <div class="dropdown-check-list" tabindex="100">
+                <span class="anchor" onclick="toggleDropdown()">
+                    Pilih Tag...
+                </span>
+
+                <ul id="list-items" class="items" style="display:none;list-style:none;padding:0;margin:0;">
+
+                    @foreach($tags as $t)
+                        <li>
+                            <label>
+                                <input type="checkbox" name="tags[]" value="{{ $t->name }}" {{ in_array($t->name, (array) request('tags')) ? 'checked' : '' }}>
+
+                                {{ $t->name }}
+                            </label>
+                        </li>
+                    @endforeach
+
+                </ul>
+            </div>
+
+            <button type="submit" class="search-btn">
+                Cari
+            </button>
+
+            @if(request('search') || request('tags'))
+                <a href="{{ route('web.utama') }}" class="search-btn" style="
+                                            background:#e74c3c;
+                                            color:white;
+                                            text-decoration:none;
+                                            padding:10px;
+                                            border-radius:5px;
+                                        ">
+                    Reset
+                </a>
+            @endif
+
+        </form>
     </div>
 
-    <div class="card">
-        <h3>Categories</h3>
-        <h2>12</h2>
+    <div class="recipes">
+
+        @foreach($resep_terbaru as $data)
+
+            <a href="{{ route('resep.detail', $data->id) }}" style="text-decoration:none;color:inherit;">
+
+                <div class="recipe-card">
+
+                    <img src="{{ asset('uploads/recipes/' . $data->image) }}" alt="{{ $data->recipe_name }}">
+
+                    <div class="recipe-content">
+
+                        <h3>{{ $data->recipe_name }}</h3>
+
+                        <div class="recipe-tags" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+
+                            @foreach($data->tags as $tag)
+                                <span class="tag-green">
+                                    {{ $tag->name }}
+                                </span>
+                            @endforeach
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        @endforeach
+
     </div>
 
-    <div class="card">
-        <h3>Visitors</h3>
-        <h2>24K</h2>
-    </div>
+    <script>
+        function toggleDropdown() {
+            var list = document.getElementById('list-items');
 
-    <div class="card">
-        <h3>Comments</h3>
-        <h2>842</h2>
-    </div>
-
-</div>
-
-<div class="recipes">
-
-    <div class="recipe-card">
-        <img src="{{ asset('frontend/images/salad.jpg') }}">
-
-        <div class="recipe-content">
-            <h3>Healthy Salad Bowl</h3>
-            <p>Fresh vegetables with creamy dressing.</p>
-        </div>
-    </div>
-
-    <div class="recipe-card">
-        <img src="{{ asset('frontend/images/steak.jpg') }}">
-
-        <div class="recipe-content">
-            <h3>Steak & Potato</h3>
-            <p>Juicy steak with crispy potato.</p>
-        </div>
-    </div>
-
-    <div class="recipe-card">
-        <img src="{{ asset('frontend/images/veganbowl.jpg') }}">
-
-        <div class="recipe-content">
-            <h3>Hidup Jokowiiiiiiii</h3>
-            <p>Healthy vegan recipe with nutrition.</p>
-        </div>
-    </div>
-
-</div>
-
+            if (list.style.display === 'block') {
+                list.style.display = 'none';
+            } else {
+                list.style.display = 'block';
+            }
+        }
+    </script>
 @endsection

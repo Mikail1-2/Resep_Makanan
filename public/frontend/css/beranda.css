@@ -21,6 +21,22 @@ body {
     border-right: 1px solid #ececec;
 }
 
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
 .logo h2 {
     color: #ff8c42;
     margin-bottom: 45px;
@@ -152,7 +168,7 @@ body {
 
 .recipes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 1fr); 
     gap: 25px;
 }
 
@@ -235,6 +251,57 @@ body {
     background: #ffefe2;
     color: #ff8c42;
 }
+
+/* =========================================
+   TAMBAHAN UNTUK PENCARIAN & FILTER
+   ========================================= */
+.search-filter-container {
+    margin: 0 0 30px 0;
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 18px;
+    border: 1px solid #ececec;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.sort-select {
+    width: 200px;
+    padding: 12px 18px;
+    border-radius: 18px;
+    border: 1px solid #ececec;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.search-btn {
+    background-color: #ff8c42;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+    font-family: inherit;
+}
+
+.search-btn:hover {
+    background-color: #ff7a21;
+}
+
+/* --- Paste kodingan di atas tepat sebelum baris @media di bawah ini --- */
+/* @media (max-width: 900px) { ... } */
+
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
@@ -243,4 +310,57 @@ body {
     .sidebar {
         width: 100%;
     }
+}
+
+/* =========================================
+   RECIPE TAGS (BADGE KATEGORI)
+   ========================================= */
+.recipe-tags {
+    display: flex;
+    flex-wrap: wrap; /* Kalau tag-nya banyak, otomatis turun ke bawah */
+    gap: 8px; /* Jarak antar tag */
+    margin-top: 10px;
+}
+
+.tag-green {
+    background-color: #d4edda; /* Warna background hijau muda */
+    color: #155724; /* Warna teks hijau gelap */
+    padding: 5px 12px;
+    border-radius: 20px; /* Membuat ujungnya membulat seperti pil */
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize; /* Huruf depannya otomatis besar */
+}
+
+/* Update CSS ini */
+
+.dropdown-check-list { 
+    display: inline-block; 
+    position: relative; 
+    width: 250px;       /* Ini yang bikin dia gak kelebaran lagi */
+    flex: 0 0 auto;    /* Biar nggak makin ciut kalau layarnya sempit */
+}
+
+.anchor { 
+    background-color: #fff; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    width: 100%;         /* Ngikutin lebar kontainer parent-nya */
+    box-sizing: border-box; /* Biar padding nggak bikin kotak jadi melar keluar */
+    display: block;
+}
+
+.items { 
+    display: none; 
+    position: absolute; 
+    background: #fff; 
+    border: 1px solid #ccc; 
+    width: 100%;         /* Biar lebarnya pas sama anchor */
+    box-sizing: border-box; /* Biar border nggak ngerusak layout */
+    z-index: 1000;       /* Biar nongol di paling depan */
+    max-height: 250px;   /* Dikasih agak tinggi biar nggak perlu scroll-scroll amat */
+    overflow-y: auto; 
+    padding: 10px; 
 }

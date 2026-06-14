@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Recipe;
+
 class ProfileController extends Controller
 {
-    public function index()
-    {
-
-    }
     public function profile()
     {
         $user = Auth::user();
@@ -27,6 +23,7 @@ class ProfileController extends Controller
             )
         );
     }
+
     public function edit()
     {
         $user = Auth::user();
@@ -36,9 +33,17 @@ class ProfileController extends Controller
             compact('user')
         );
     }
+
     public function update(Request $request)
     {
         $user = Auth::user();
+
+        $request->validate([
+            'nama' => 'required|max:100',
+            'email' => 'required|email',
+            'hp' => 'nullable|max:20',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
+        ]);
 
         $user->nama = $request->nama;
         $user->email = $request->email;
@@ -46,7 +51,19 @@ class ProfileController extends Controller
 
         if ($request->hasFile('foto')) {
 
-            $filename = time() . '.' .
+            if ($user->foto) {
+
+                $oldPath = public_path(
+                    'uploads/profile/' . $user->foto
+                );
+
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
+            }
+
+            $filename =
+                time() . '.' .
                 $request->foto->extension();
 
             $request->foto->move(
@@ -56,10 +73,7 @@ class ProfileController extends Controller
 
             $user->foto = $filename;
         }
-        if ($request->remove_photo == 1) {
 
-            $user->foto = null;
-        }
         $user->save();
 
         return redirect()
@@ -67,6 +81,32 @@ class ProfileController extends Controller
             ->with(
                 'success',
                 'Profile updated successfully'
+            );
+    }
+
+    public function delete()
+    {
+        $user = Auth::user();
+
+        if ($user->foto) {
+
+            $path = public_path(
+                'uploads/profile/' . $user->foto
+            );
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
+
+            $user->foto = null;
+            $user->save();
+        }
+
+        return redirect()
+            ->back()
+            ->with(
+                'success',
+                'Photo removed successfully'
             );
     }
 }

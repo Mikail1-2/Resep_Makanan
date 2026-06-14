@@ -127,7 +127,20 @@
         </main>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('frontend/js/dropdown.js') }}"></script>
+    @if(session('success'))
+
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+                confirmButtonColor: '#ff8c42'
+            });
+        </script>
+
+    @endif
     @stack('scripts')
 </body>
 

@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile'])->name('frontend.profile');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('frontend.profile.edit');
     Route::post('/profile/update',[ProfileController::class, 'update'])->name('frontend.profile.update');
+    Route::post('/profile/delete-photo', [ProfileController::class, 'delete'])->name('frontend.profile.deletephoto');
     // Halaman my recipe
     Route::get('/my-recipe', [RecipeController::class, 'myRecipe'])->name('frontend.myrecipe');
     // Fitur Create Recipe

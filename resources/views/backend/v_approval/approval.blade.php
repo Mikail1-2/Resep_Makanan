@@ -10,70 +10,80 @@
 
         <h2>Recipe Approval</h2>
 
-        <table class="approval-table">
+        @foreach($recipes as $recipe)
 
-            <thead>
-                <tr>
-                    <th>Recipe</th>
-                    <th>Category</th>
-                    <th>Submitted By</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+            <div class="approval-item">
 
-            <tbody>
+                {{-- FOTO + NAMA --}}
+                <div class="recipe-section">
 
-                @foreach($recipes as $recipe)
+                    <h4>{{ $recipe->recipe_name }}</h4>
 
-                    <tr>
+                    <img src="{{ asset('uploads/recipes/' . $recipe->image) }}" class="preview-image"
+                        alt="{{ $recipe->recipe_name }}">
 
-                        <td>{{ $recipe->recipe_name }}</td>
+                </div>
 
-                        <td>{{ $recipe->kategori->name }}</td>
+                {{-- INFORMASI --}}
+                <div class="info-section">
 
-                        <td>{{ $recipe->user->nama }}</td>
+                    <p>
+                        <strong>Category :</strong>
+                        {{ $recipe->kategori->name }}
+                    </p>
 
-                        <td>
-                            <span class="status-badge {{ strtolower($recipe->status) }}">
-                                {{ $recipe->status }}
-                            </span>
-                        </td>
+                    <p>
+                        <strong>Submitted By :</strong>
+                        {{ $recipe->user->nama }}
+                    </p>
 
-                        <td>
+                    <p>
+                        <strong>Status :</strong>
 
-                            <div class="action-container">
+                        <span class="status-badge {{ strtolower($recipe->status) }}">
+                            {{ $recipe->status }}
+                        </span>
+                    </p>
 
-                                <div class="button-row">
-                                    <form action="{{ route('backend.approve', $recipe->id) }}" method="POST"
-                                        class="form-inline">
-                                        @csrf
-                                        <button type="submit" class="approve-btn">Approve</button>
-                                    </form>
+                </div>
 
-                                    <form action="{{ route('backend.reject', $recipe->id) }}" method="POST" class="form-inline"
-                                        id="reject-form-{{ $recipe->id }}">
-                                        @csrf
-                                        <button type="submit" class="reject-btn">Reject</button>
-                                    </form>
-                                </div>
+                {{-- ACTION --}}
+                <div class="action-section">
 
-                                <div class="comment-row">
-                                    <textarea name="reject_reason" form="reject-form-{{ $recipe->id }}" class="reject-reason"
-                                        placeholder="Enter rejection reason..." required rows="3"></textarea>
-                                </div>
+                    <div class="button-row">
 
-                            </div>
+                        <a href="{{ route('backend.approval.detail', $recipe->id) }}" class="detail-btn">
+                            Detail
+                        </a>
 
-                        </td>
+                        <form action="{{ route('backend.approve', $recipe->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="approve-btn">
+                                Approve
+                            </button>
+                        </form>
 
-                    </tr>
+                        <form action="{{ route('backend.reject', $recipe->id) }}" method="POST"
+                            id="reject-form-{{ $recipe->id }}">
 
-                @endforeach
+                            @csrf
 
-            </tbody>
+                            <button type="submit" class="reject-btn">
+                                Reject
+                            </button>
 
-        </table>
+                        </form>
+
+                    </div>
+
+                    <textarea name="reject_reason" form="reject-form-{{ $recipe->id }}" class="reject-reason"
+                        placeholder="Enter rejection reason..." required></textarea>
+
+                </div>
+
+            </div>
+
+        @endforeach
 
     </div>
 

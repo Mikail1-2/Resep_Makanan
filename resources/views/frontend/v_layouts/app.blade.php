@@ -7,6 +7,7 @@
     <title>Foody Dashboard</title>
 
     <link rel="stylesheet" href="{{ asset('frontend/css/beranda.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -128,14 +129,134 @@
         </main>
 
     </div>
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-col">
+
+                <div class="footer-logo">
+
+                    <img src="{{ asset('image/Logo.png') }}" alt="Resepku">
+
+                    <h3>Resepku</h3>
+
+                </div>
+
+                <p>
+                    Discover delicious recipes, share your cooking ideas,
+                    and inspire others through your culinary creations.
+                </p>
+
+            </div>
+
+            <div class="footer-col">
+
+                <h4>Quick Links</h4>
+
+                <ul>
+                    <li>
+                        <a href="{{ route('web.utama') }}">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('publik.recipe') }}">
+                            Recipes
+                        </a>
+                    </li>
+
+                    @auth
+                        <li>
+                            <a href="{{ route('frontend.create') }}">
+                                Create Recipe
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('frontend.myrecipe') }}">
+                                My Recipes
+                            </a>
+                        </li>
+                    @endauth
+
+                </ul>
+
+            </div>
+
+            <div class="footer-col">
+
+                <h4>Categories</h4>
+
+                <ul>
+
+                    <li>
+                        <a href="{{ route('publik.makanan') }}">
+                            Food
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('publik.minuman') }}">
+                            Drinks
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('publik.dessert') }}">
+                            Desserts
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-col">
+
+                <h4>Follow Us</h4>
+
+                <div class="footer-social">
+
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © {{ date('Y') }} Resepku. All Rights Reserved.
+
+        </div>
+
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('frontend/js/dropdown.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     @if(session('success'))
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil!',
@@ -145,6 +266,7 @@
             });
         </script>
     @endif
+
     @stack('scripts')
 </body>
 

@@ -1,0 +1,144 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f7f3ee;
+}
+
+.detail-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.detail-header h2 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 42px;
+    padding: 0 18px;
+
+    background: #ff8c42;
+    color: white;
+
+    text-decoration: none;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #e67830;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.recipe-info {
+    margin-bottom: 25px;
+}
+
+.recipe-info p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 15px;
+}
+
+.recipe-info strong {
+    display: inline-block;
+    width: 120px;
+    color: #333;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.recipe-image {
+    width: 100%;
+    max-width: 500px;
+
+    display: block;
+
+    border-radius: 16px;
+    margin: 20px 0;
+
+    object-fit: cover;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.recipe-section {
+    margin-top: 25px;
+}
+
+.recipe-section h3 {
+    margin-bottom: 12px;
+    color: #ff8c42;
+    font-size: 20px;
+}
+
+/* =========================
+   CONTENT BOX
+========================= */
+
+.recipe-content {
+    background: #f8f8f8;
+    border-radius: 12px;
+
+    padding: 18px;
+
+    line-height: 1.8;
+    color: #444;
+
+    white-space: pre-line;
+
+    border: 1px solid #ececec;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+    .detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .recipe-image {
+        max-width: 100%;
+    }
+}

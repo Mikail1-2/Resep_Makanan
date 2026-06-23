@@ -190,4 +190,16 @@ class RecipeController extends Controller
                 'Recipe resubmitted successfully.'
             );
     }
+    public function approvedDetail($id)
+    {
+        $recipe = Recipe::with([
+            'user',
+            'kategori'
+        ])->findOrFail($id);
+
+        return view(
+            'backend.v_approval.detail',
+            compact('recipe')
+        );
+    }
 }

@@ -1,58 +1,92 @@
-/* Styling Tabel Utama */
-.approval-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    table-layout: fixed; /* Mengunci total lebar tabel agar patuh pada persentase di bawah */
-}
-
-/* BAGI RATA LEBAR KOLOM (Total 100%)
-   Teks kiri jadi punya ruang bernapas, area action jadi pas di kanan
-*/
-.approval-table th:nth-child(1),
-.approval-table td:nth-child(1) {
-    width: 25%;
-} /* Recipe */
-.approval-table th:nth-child(2),
-.approval-table td:nth-child(2) {
-    width: 15%;
-} /* Category */
-.approval-table th:nth-child(3),
-.approval-table td:nth-child(3) {
-    width: 18%;
-} /* Submitted By */
-.approval-table th:nth-child(4),
-.approval-table td:nth-child(4) {
-    width: 12%;
-} /* Status */
-.approval-table th:nth-child(5),
-.approval-table td:nth-child(5) {
-    width: 30%;
-} /* Action (Lebih luas) */
-
-.approval-table th,
-.approval-table td {
-    padding: 14px 16px;
-    text-align: left;
-    border-bottom: 1px solid #f0f0f0;
-    vertical-align: middle; /* Menjaga semua element sejajar lurus di tengah */
-    word-wrap: break-word; /* Menjaga teks panjang agar otomatis turun ke bawah */
-}
-
-.approval-table th {
-    background: #fafafa;
-    font-weight: 600;
-    color: #444;
-}
-
-/* Badge Status Pending */
-.status-badge {
-    padding: 6px 12px;
+.card {
+    background: #fff;
+    padding: 25px;
     border-radius: 20px;
-    font-size: 13px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+.approval-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+
+    padding: 25px 0;
+
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.approval-item:last-child {
+    border-bottom: none;
+}
+
+/* ======================
+   GAMBAR
+====================== */
+
+.recipe-section {
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.recipe-section h4 {
+    font-size: 17px;
     font-weight: 600;
-    text-transform: capitalize;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.preview-image {
+    width: 220px;
+    height: 140px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+
+/* ======================
+   INFO
+====================== */
+
+.info-section {
+    width: 250px;
+    flex-shrink: 0;
+
+    /* DITURUNKAN AGAR SEJAJAR DENGAN GAMBAR */
+    padding-top: 45px;
+}
+
+.info-section p {
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.info-section strong {
     display: inline-block;
+    width: 110px;
+}
+
+/* ======================
+   STATUS
+====================== */
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .status-badge.pending {
@@ -60,82 +94,133 @@
     color: #856404;
 }
 
-/* CONTAINER ACTION (Dibuat 100% biar tidak ada ruang kosong sisa) */
-.action-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%; /* MEMBESAR: Mengikuti lebar kolom 30% tadi */
+.status-badge.approved {
+    background: #d4edda;
+    color: #155724;
 }
 
-/* Baris Tombol (Approve & Reject Berdampingan) */
+.status-badge.rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ======================
+   ACTION
+====================== */
+
+.action-section {
+    flex: 1;
+
+    /* IKUT TURUN AGAR SEJAJAR DENGAN INFO */
+    padding-top: 45px;
+}
+
 .button-row {
     display: flex;
-    gap: 8px;
-    width: 100%;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
 }
 
-.button-row .form-inline {
-    flex: 1; /* Membagi tombol kiri & kanan rata 50:50 */
+.button-row form {
     margin: 0;
 }
 
-/* Tombol Approve */
-.approve-btn {
-    width: 100%;
-    background: #2cc157;
-    color: white;
+.detail-btn,
+.approve-btn,
+.reject-btn {
+    min-width: 90px;
+    height: 38px;
+
     border: none;
-    padding: 9px 14px;
-    border-radius: 6px;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
     cursor: pointer;
-    font-weight: 600;
+
     font-size: 13px;
-    transition: background 0.2s;
+    font-weight: 600;
+}
+
+.detail-btn {
+    background: #f1f3f5;
+    color: #495057;
+}
+
+.approve-btn {
+    background: #22c55e;
+    color: white;
+}
+
+.reject-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.detail-btn:hover {
+    background: #dee2e6;
 }
 
 .approve-btn:hover {
-    background: #229a43;
-}
-
-/* Tombol Reject */
-.reject-btn {
-    width: 100%;
-    background: #e53e3e;
-    color: white;
-    border: none;
-    padding: 9px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 13px;
-    transition: background 0.2s;
+    background: #16a34a;
 }
 
 .reject-btn:hover {
-    background: #c53030;
+    background: #dc2626;
 }
 
-/* Kotak Komentar di Bawah Tombol */
-.comment-row {
-    width: 100%;
-}
+/* ======================
+   TEXTAREA
+====================== */
 
 .reject-reason {
-    width: 100%; /* MEMBESAR: Lebarnya otomatis penuh sejajar dengan tombol di atasnya */
-    min-height: 70px; /* Tinggi yang pas, pas di mata dan muat banyak teks alasan */
+    width: 100%;
+    max-width: 350px;
+    height: 100px;
+
     padding: 10px;
+
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: 10px;
+
     font-size: 13px;
-    outline: none;
-    transition: border-color 0.2s;
-    box-sizing: border-box;
-    resize: vertical; /* Admin bisa ditarik ke bawah jika alasannya sepanjang kereta */
     font-family: inherit;
+
+    resize: vertical;
 }
 
 .reject-reason:focus {
+    outline: none;
     border-color: #ff8c42;
     box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.15);
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
+
+@media (max-width: 992px) {
+    .approval-item {
+        flex-direction: column;
+    }
+
+    .recipe-section,
+    .info-section,
+    .action-section {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .preview-image {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .reject-reason {
+        max-width: 100%;
+    }
 }

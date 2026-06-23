@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/beranda-admin.css') }}">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @stack('styles')
 </head>
@@ -22,7 +23,7 @@
 
             <a class="logo" href="{{ route('backend.beranda') }}">
                 <img src="{{ asset('image/Logo.png') }}" alt="Logo Resepku" class="logo-img">
-                <h2>Resepku</h2>
+                <h2>Admin</h2>
             </a>
 
             <ul>

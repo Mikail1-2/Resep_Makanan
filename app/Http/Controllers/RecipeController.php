@@ -10,10 +10,10 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::where('status', 'approved')
-                                 ->orderBy('created_at', 'desc')
-                                 ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-    return view('frontend.v_recipes.recipes', compact('recipes'));
+        return view('frontend.v_recipes.recipes', compact('recipes'));
     }
     public function kategori($nama_kategori)
     {
@@ -180,5 +180,17 @@ class RecipeController extends Controller
                 'success',
                 'Recipe resubmitted successfully.'
             );
+    }
+    public function approvedDetail($id)
+    {
+        $recipe = Recipe::with([
+            'user',
+            'kategori'
+        ])->findOrFail($id);
+
+        return view(
+            'backend.v_approval.detail',
+            compact('recipe')
+        );
     }
 }

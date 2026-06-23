@@ -4,7 +4,7 @@
 <div class="detail-container" style="padding: 20px; background: #fff; border-radius: 10px; margin-top: 20px;">
     
     {{-- Tombol Kembali --}}
-    <a href="{{ url()->previous() }}" style="display: inline-block; margin-bottom: 20px; text-decoration: none; color: #3498db;">
+    <a href="{{ url()->previous() }}" style="display: inline-block; margin-bottom: 20px; text-decoration: none; color: #ff7a21;">
         ⬅ Kembali
     </a>
 

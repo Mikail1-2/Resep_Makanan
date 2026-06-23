@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,10 +11,10 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::where('status', 'approved')
-                                 ->orderBy('created_at', 'desc')
-                                 ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-    return view('frontend.v_recipes.recipes', compact('recipes'));
+        return view('frontend.v_recipes.recipes', compact('recipes'));
     }
     public function kategori($nama_kategori)
     {
@@ -28,18 +29,24 @@ class RecipeController extends Controller
 
     public function detail($id)
     {
-        // 1. Cari data resep berdasarkan ID yang diklik
         $resep = Recipe::findOrFail($id);
 
-        // 2. Cek angka kategori_id milik resep tersebut
+        // Simpan ke histori "terakhir dilihat"
+        if (Auth::check()) {
+            $lastViewed = session('last_viewed', []);
+
+            $lastViewed = array_diff($lastViewed, [$id]);
+            array_unshift($lastViewed, $id);
+            $lastViewed = array_slice($lastViewed, 0, 6);
+
+            session(['last_viewed' => $lastViewed]);
+        }
+
         if ($resep->kategori_id == 1) {
-            // Jika kategori_id = 1 (Makanan), buka file d-makanan
             return view('frontend.v_kategori.d-makanan', compact('resep'));
         } elseif ($resep->kategori_id == 2) {
-            // Jika kategori_id = 2 (Minuman), buka file d-minuman
             return view('frontend.v_kategori.d-minuman', compact('resep'));
         } else {
-            // Jika kategori_id = 3 (Dessert), buka file d-dessert
             return view('frontend.v_kategori.d-dessert', compact('resep'));
         }
     }

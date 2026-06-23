@@ -67,6 +67,10 @@
 
                     </select>
 
+                    @error('kategori_id')
+                    <small style="color: red; font-weight: bold;">{{ $message }}</small>
+                    @enderror
+
                 </div>
 
                 {{-- TAG --}}

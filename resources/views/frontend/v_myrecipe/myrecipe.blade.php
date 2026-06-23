@@ -16,54 +16,158 @@
 
     </div>
 
-    <div class="recipe-grid">
+    {{-- PENDING --}}
+    @if($pendingRecipes->count())
 
-        @foreach($recipes as $recipe)
+        <h3 class="section-title">
+            Pending Recipes
+        </h3>
 
-            <div class="recipe-card">
-                <a href="{{ route('resep.detail', $recipe->id) }}">
-                    <img src="{{ asset('uploads/recipes/' . $recipe->image) }}" alt="{{ $recipe->recipe_name }}">
-                </a>
-                <div class="recipe-content">
+        <div class="recipe-grid">
 
-                    <h3>
-                        {{ $recipe->recipe_name }}
-                    </h3>
+            @foreach($pendingRecipes as $recipe)
 
-                    <p class="category">
-                        {{ $recipe->kategori->name }}
-                    </p>
+                <div class="recipe-card">
 
-                    @if($recipe->status == 'approved')
+                    <a href="{{ route('frontend.myrecipe.show', $recipe->id) }}">
 
-                        <span class="status approved">
-                            Approved
-                        </span>
+                        <img src="{{ asset('uploads/recipes/' . $recipe->image) }}" alt="{{ $recipe->recipe_name }}">
 
-                    @elseif($recipe->status == 'pending')
+                    </a>
+
+                    <div class="recipe-content">
+
+                        <h3>
+                            {{ $recipe->recipe_name }}
+                        </h3>
+
+                        <p class="category">
+                            {{ $recipe->kategori->name }}
+                        </p>
 
                         <span class="status pending">
                             Pending
                         </span>
 
-                    @else
+                    </div>
+
+                </div>
+
+            @endforeach
+
+        </div>
+
+    @endif
+
+
+    {{-- REJECTED --}}
+    @if($rejectedRecipes->count())
+
+        <h3 class="section-title">
+            Rejected Recipes
+        </h3>
+
+        <div class="recipe-grid">
+
+            @foreach($rejectedRecipes as $recipe)
+
+                <div class="recipe-card">
+
+                    <a href="{{ route('frontend.myrecipe.show', $recipe->id) }}">
+
+                        <img src="{{ asset('uploads/recipes/' . $recipe->image) }}" alt="{{ $recipe->recipe_name }}">
+
+                    </a>
+
+                    <div class="recipe-content">
+
+                        <h3>
+                            {{ $recipe->recipe_name }}
+                        </h3>
+
+                        <p class="category">
+                            {{ $recipe->kategori->name }}
+                        </p>
 
                         <span class="status rejected">
                             Rejected
                         </span>
 
                         <p class="reject-note">
-                            {{ $recipe->reject_reason }}
+                            {{ Str::limit($recipe->reject_reason, 80) }}
                         </p>
 
-                    @endif
+                    </div>
 
                 </div>
 
-            </div>
+            @endforeach
 
-        @endforeach
+        </div>
 
-    </div>
+    @endif
+
+
+    {{-- APPROVED --}}
+    @if($approvedRecipes->count())
+
+        <h3 class="section-title">
+            Approved Recipes
+        </h3>
+
+        <div class="recipe-grid">
+
+            @foreach($approvedRecipes as $recipe)
+
+                <div class="recipe-card">
+
+                    <a href="{{ route('frontend.myrecipe.show', $recipe->id) }}">
+
+                        <img src="{{ asset('uploads/recipes/' . $recipe->image) }}" alt="{{ $recipe->recipe_name }}">
+
+                    </a>
+
+                    <div class="recipe-content">
+
+                        <h3>
+                            {{ $recipe->recipe_name }}
+                        </h3>
+
+                        <p class="category">
+                            {{ $recipe->kategori->name }}
+                        </p>
+
+                        <span class="status approved">
+                            Approved
+                        </span>
+
+                    </div>
+
+                </div>
+
+            @endforeach
+
+        </div>
+
+    @endif
+
+
+    @if(
+            !$pendingRecipes->count() &&
+            !$rejectedRecipes->count() &&
+            !$approvedRecipes->count()
+        )
+
+        <div class="empty-state">
+
+            <h3>No Recipes Yet</h3>
+
+            <p>
+                You haven't submitted any recipes yet.
+            </p>
+
+        </div>
+
+    @endif
 
 @endsection

@@ -52,17 +52,21 @@ Route::middleware(['auth'])->group(function () {
     // Halaman Profil
     Route::get('/profile', [ProfileController::class, 'profile'])->name('frontend.profile');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('frontend.profile.edit');
-    Route::post('/profile/update',[ProfileController::class, 'update'])->name('frontend.profile.update');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('frontend.profile.update');
     Route::post('/profile/delete-photo', [ProfileController::class, 'delete'])->name('frontend.profile.deletephoto');
     // Halaman my recipe
     Route::get('/my-recipe', [RecipeController::class, 'myRecipe'])->name('frontend.myrecipe');
+    Route::get('/my-recipe/{id}',[RecipeController::class, 'show'])->name('frontend.myrecipe.show');
+    // Halaman edit my recipe
+    Route::get('/recipe/{id}/edit',[RecipeController::class, 'edit'])->name('frontend.recipe.edit');
+    Route::post('/recipe/{id}/update',[RecipeController::class, 'update'])->name('frontend.recipe.update');
     // Fitur Create Recipe
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
 
-    Route::get('backend/approval',[RecipeController::class, 'approval'])->name('backend.approval');
-    Route::post('backend/approval/{id}/approve',[RecipeController::class, 'approve'])->name('backend.approve');
-    Route::post('backend/approval/{id}/reject',[RecipeController::class, 'reject'])->name('backend.reject');
+    Route::get('backend/approval', [RecipeController::class, 'approval'])->name('backend.approval');
+    Route::post('backend/approval/{id}/approve', [RecipeController::class, 'approve'])->name('backend.approve');
+    Route::post('backend/approval/{id}/reject', [RecipeController::class, 'reject'])->name('backend.reject');
 
     // Manage User
     Route::resource('manage-user', UserManagementController::class)->middleware('auth');

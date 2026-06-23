@@ -35,7 +35,7 @@
                 <li class="category-wrapper">
 
                     <div class="category-toggle">
-                        Categories
+                        Categories ▼
                     </div>
 
                     <div class="subcategory">

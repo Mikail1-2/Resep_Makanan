@@ -174,22 +174,6 @@
     <div class="card">
 
         <h3>
-            Comment Moderation
-        </h3>
-
-        <div class="comment-item">
-            Great Recipe!
-        </div>
-
-        <div class="comment-item">
-            Delicious Food!
-        </div>
-
-    </div>
-
-    <div class="card">
-
-        <h3>
             Recipe Categories
         </h3>
 

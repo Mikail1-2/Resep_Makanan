@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Models\Tag;
-
+use App\Models\kategori;
 class KategoriController extends Controller
 {
     // --- FUNGSI MAKANAN (Kategori ID: 1) ---
+    public function index()
+    {
+    $categories = kategori::with('resep')->get();
+    return view('backend.v_manage-kategori.index', compact('categories'));
+    }
+
     public function makanan(Request $request)
     {
         $tags = Tag::all();
@@ -69,5 +75,14 @@ class KategoriController extends Controller
 
         $recipes = $query->get();
         return view('frontend.v_kategori.k-dessert', compact('recipes', 'tags'));
+    }
+    public function manage()
+    {
+    $categories = kategori::all();
+
+    return view(
+        'backend.v_manage-kategori.index',
+        compact('categories')
+    );
     }
 }

@@ -31,12 +31,12 @@
                     <a href="{{ route('web.utama') }}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('publik.recipe') }}">Recipes</a>
+                    <a href="{{ route('publik.recipe') }}">Resep</a>
                 </li>
                 <li class="category-wrapper">
 
                     <div class="category-toggle">
-                        Categories ▼
+                        Kategori ▼
                     </div>
 
                     <div class="subcategory">
@@ -60,10 +60,10 @@
 
                     @if(Auth::user()->role == '0')
                         <li>
-                            <a href="{{ route('frontend.create') }}">Create Recipe</a>
+                            <a href="{{ route('frontend.create') }}">Buat Resep</a>
                         </li>
                         <li>
-                            <a href="{{ route('frontend.myrecipe') }}">My Recipes</a>
+                            <a href="{{ route('frontend.myrecipe') }}">Resep Saya</a>
                         </li>
                     @endif
 

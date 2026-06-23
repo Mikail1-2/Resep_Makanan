@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foody Dashboard</title>
-
+    <title>Resepku</title>
+    <link rel="icon" type="image/png" href="{{ asset('image/Logo.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/beranda.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -45,9 +45,19 @@
 
                 <li>
 
-                    <a href="#">
+                    <a href="{{ route('kategori.index') }}">
 
                         Manage Recipe
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="{{ route('kategori.index') }}">
+
+                        Manage Category
 
                     </a>
 
@@ -71,25 +81,25 @@
             {{-- TOPBAR CUMA MUNCUL KALAU RUTE SAAT INI ADALAH 'backend.beranda' --}}
             @if(Request::route()->getName() == 'backend.beranda')
 
-            <div class="topbar">
-                <h1>Food Dashboard</h1>
+                <div class="topbar">
+                    <h1>Food Dashboard</h1>
 
-                <div class="topbar-action">
+                    <div class="topbar-action">
 
-                    <form action="{{ route('logout') }}" method="POST" style="margin:0;">
+                        <form action="{{ route('logout') }}" method="POST" style="margin:0;">
 
-                        @csrf
+                            @csrf
 
-                        <button class="logout-btn">
+                            <button class="logout-btn">
 
-                            Logout
+                                Logout
 
-                        </button>
+                            </button>
 
-                    </form>
+                        </form>
 
+                    </div>
                 </div>
-            </div>
 
             @endif
 

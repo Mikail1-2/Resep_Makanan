@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\kategori;
 
 class Recipe extends Model
 {
@@ -33,7 +34,7 @@ class Recipe extends Model
     public function kategori()
     {
         // Pastikan 'kategori_id' sesuai dengan nama kolom yang ada di tabel recipes kamu
-        return $this->belongsTo(Kategori::class, 'kategori_id');
+        return $this->belongsTo(kategori::class, 'kategori_id');
     }
 
     public function tags()

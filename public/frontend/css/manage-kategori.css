@@ -1,0 +1,136 @@
+/* manage-kategori.css */
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.management-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.search-btn {
+    padding: 10px 20px;
+    background: #f97316;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+thead tr {
+    background: #f5f5f5;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    font-weight: 600;
+}
+
+/* Lebar kolom */
+table th:nth-child(1),
+table td:nth-child(1) { width: 60px; }
+
+table th:nth-child(2),
+table td:nth-child(2) { width: auto; }
+
+table th:nth-child(3),
+table td:nth-child(3) { width: 140px; text-align: center; }
+
+table th:nth-child(4),
+table td:nth-child(4) { width: 320px; }
+
+/* Action group */
+.action-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-group form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+}
+
+.action-group .edit-input {
+    width: 120px;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.edit-btn,
+.delete-btn {
+    height: 34px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.edit-btn {
+    background: #eef6ff;
+    color: #2563eb;
+}
+
+.delete-btn {
+    background: #fff0f0;
+    color: #dc2626;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.8;
+}

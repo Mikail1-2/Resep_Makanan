@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Mail\AccountDeactivated;
+use Illuminate\Support\Facades\Mail;
+
 
 class UserManagementController extends Controller
 {
@@ -122,9 +125,11 @@ class UserManagementController extends Controller
         $user = User::findOrFail($id);
 
         $user->status = 0;
-
         $user->save();
 
-        return back()->with('success', 'User berhasil dinonaktifkan');
+        // Kirim email notifikasi
+        Mail::to($user->email)->send(new AccountDeactivated($user));
+
+        return back()->with('success', 'User berhasil dinonaktifkan dan email notifikasi telah dikirim');
     }
 }

@@ -27,20 +27,42 @@ class BerandaController extends Controller
             ]);
         }
 
-        return view('frontend.v_beranda.index');
+        $menuHariIni = Recipe::with('kategori')
+            ->where('status', 'approved')
+            ->latest('updated_at')
+            ->take(6)
+            ->get();
+
+        return view('frontend.v_beranda.index', [
+            'menuHariIni' => $menuHariIni,
+        ]);
     }
 
     public function indexGuest(Request $request)
     {
-        // Ambil 3 resep terbaru saja (biar pas dengan desain 3 kolom di gambarmu)
-        $resep_terbaru = Recipe::where('status', 'approved')
+        $lastViewed = collect();
+        if (Auth::check() && session()->has('last_viewed')) {
+            $ids = session('last_viewed');
+
+            $lastViewed = Recipe::with('kategori', 'tags')
+                ->whereIn('id', $ids)
+                ->get()
+                ->sortBy(fn($r) => array_search($r->id, $ids))
+                ->values();
+        }
+
+        $resep_terbaru = Recipe::with('kategori', 'tags')
+            ->where('status', 'approved')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        // Hitung total seluruh resep yang ada di database
-        $total_resep = Recipe::count();
+        $menuHariIni = Recipe::with('kategori', 'tags')
+            ->where('status', 'approved')
+            ->latest('updated_at')
+            ->take(6)
+            ->get();
 
-        // Asumsi total kategori, bisa disesuaikan kalau kamu punya tabel Kategori
+        $total_resep = Recipe::count();
         $total_kategori = 12;
         $tags = Tag::all();
 
@@ -48,9 +70,11 @@ class BerandaController extends Controller
             'frontend.v_beranda.index',
             compact(
                 'resep_terbaru',
+                'menuHariIni',
                 'total_resep',
                 'total_kategori',
                 'tags',
+                'lastViewed'
             )
         );
     }
@@ -87,6 +111,22 @@ class BerandaController extends Controller
     public function detailResep($id)
     {
         $resep = Recipe::with('tags')->findOrFail($id);
+
+        if (Auth::check()) {
+            $lastViewed = session('last_viewed', []);
+
+            // Hapus dulu kalau udah ada (biar gak duplikat & naik ke paling atas)
+            $lastViewed = array_diff($lastViewed, [$id]);
+
+            // Taro di paling depan
+            array_unshift($lastViewed, $id);
+
+            // Batasi cuma simpen 6 ID terakhir
+            $lastViewed = array_slice($lastViewed, 0, 6);
+
+            session(['last_viewed' => $lastViewed]);
+        }
+
 
         return view('frontend.v_recipes.d_makanan', compact('resep'));
     }

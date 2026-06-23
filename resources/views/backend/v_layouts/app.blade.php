@@ -44,6 +44,26 @@
 
                 <li>
 
+                    <a href="{{ route('kategori.index') }}">
+
+                        Manage Recipe
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="{{ route('kategori.index') }}">
+
+                        Manage Category
+
+                    </a>
+
+                </li>
+
+                <li>
+
                     <a href="{{ route('manage-user.index') }}">
 
                         Manage User

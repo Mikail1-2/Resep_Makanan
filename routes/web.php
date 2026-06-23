@@ -10,6 +10,7 @@ use App\Http\Controllers\CreateRecipeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\ManageKategoriController;
 
 
 /*
@@ -63,6 +64,15 @@ Route::middleware(['auth'])->group(function () {
     // Fitur Create Recipe
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
+    // Fitur Kategori (Admin)
+    Route::get('/manage-category',[ManageKategoriController::class,'index'])->name('kategori.index');
+    Route::post('/manage-category/store',[ManageKategoriController::class,'store'])->name('kategori.store');
+    Route::put('/manage-category/update/{id}',[ManageKategoriController::class,'update'])->name('kategori.update');
+    Route::delete('/manage-category/delete/{id}',[ManageKategoriController::class,'destroy'])->name('kategori.delete');
+    Route::post('/tags', [ManageKategoriController::class, 'storeTag'])->name('tags.store');
+    Route::put('/tags/{id}', [ManageKategoriController::class, 'updateTag'])->name('tags.update');
+    Route::delete('/tags/{id}', [ManageKategoriController::class, 'destroyTag'])->name('tags.delete');
+
 
     Route::get('backend/approval', [RecipeController::class, 'approval'])->name('backend.approval');
     Route::post('backend/approval/{id}/approve', [RecipeController::class, 'approve'])->name('backend.approve');

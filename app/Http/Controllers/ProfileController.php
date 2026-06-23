@@ -80,7 +80,7 @@ class ProfileController extends Controller
             ->route('frontend.profile')
             ->with(
                 'success',
-                'Profile updated successfully'
+                'Profile berhasil diperbarui'
             );
     }
 

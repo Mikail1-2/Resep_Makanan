@@ -7,20 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class kategori extends Model
 {
-    use HasFactory;
-
-    protected $table = "kategori";
+    public $timestamps = false;
+     protected $table = 'kategori';
 
     protected $fillable = [
-        'name',
+        'name'
     ];
 
-    public $timestamps = false;
-
-    // --- TAMBAHKAN BLOK KODE INI ---
-    public function recipes()
+    public function resep()
     {
-        // Ingat: Sesuaikan 'kategori_id' dengan nama kolom yang ada di tabel recipes kamu nanti
-        return $this->hasMany(Recipe::class, 'kategori_id');
+        return $this->hasMany(Recipe::class,'kategori_id');
     }
+    
 }

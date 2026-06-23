@@ -72,6 +72,19 @@ textarea.form-control {
     flex:1;
 }
 
+.required-text {
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #999;
+    font-size: 14px;
+    font-style: italic;
+}
+
 /* ========================= */
 /* TAG RESULT                */
 /* ========================= */

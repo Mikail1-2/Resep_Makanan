@@ -5,7 +5,7 @@
 @section('content')
 
     <h1 class="page-title">
-        Create Recipe
+        Buat Resep 
     </h1>
 
     <div class="create-recipe-card">
@@ -18,10 +18,13 @@
             {{-- RECIPE NAME --}}
             {{-- ========================= --}}
             <div class="form-group">
-                <label>Nama Resep</label>
+                <label>
+                    Nama Resep
+                    <span class="required-text">*Wajib Diisi</span>
+                </label>
 
                 {{-- Tambahkan class bawaan untuk mewarnai border jadi merah kalau error --}}
-                <input type="text" name="recipe_name" class="form-control @error('recipe_name') is-invalid @enderror"
+                <input type="text" name="recipe_name" placeholder="Contoh: Nasgor Goreng" class="form-control @error('recipe_name') is-invalid @enderror"
                     value="{{ old('recipe_name') }}" style="@error('recipe_name') border-color: red; @enderror">
 
                 {{-- Munculkan pesan error di bawah inputan --}}
@@ -39,14 +42,15 @@
                 <div class="form-group half">
 
                     <label>
-                        Category
+                        Kategori
+                        <span class="required-text">*Wajib Diisi</span>
                     </label>
 
                     <select name="kategori_id" class="form-control">
 
                         {{-- GANTI CATEGORY DISINI --}}
                         <option value="">
-                            Select Category
+                            Pilih Kategori...
                         </option>
 
                         <option value="1">
@@ -67,7 +71,10 @@
 
                 {{-- TAG --}}
                 <div class="form-group half">
-                    <label>Tags</label>
+                    <label>
+                        Tags
+                        <span class="required-text">*Wajib Diisi</span>
+                    </label>
 
                     {{-- Dropdown Pilihan Tag --}}
                     <select id="tagSelector" class="form-control">
@@ -99,7 +106,8 @@
             <div class="form-group">
 
                 <label>
-                    Recipe Image
+                    Gambar Resep
+                    <span class="required-text">*Wajib Diisi</span>
                 </label>
 
                 <input type="file" name="image" class="form-control">
@@ -112,7 +120,8 @@
             <div class="form-group">
 
                 <label>
-                    Ingredients
+                    Bahan-bahan
+                    <span class="required-text">*Wajib Diisi</span>
                 </label>
 
                 <textarea name="ingredients" rows="5" placeholder="Enter ingredients" class="form-control"></textarea>
@@ -125,7 +134,8 @@
             <div class="form-group">
 
                 <label>
-                    Instructions
+                    Langkah-langkah
+                    <span class="required-text">*Wajib Diisi</span>
                 </label>
 
                 <textarea name="instructions" rows="6" placeholder="Enter cooking instructions"
@@ -134,7 +144,7 @@
             </div>
 
             <button type="submit" class="publish-btn">
-                Publish Recipe
+                Publish Resep
             </button>
 
         </form>

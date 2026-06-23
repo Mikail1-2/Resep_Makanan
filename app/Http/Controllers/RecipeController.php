@@ -10,11 +10,13 @@ class RecipeController extends Controller
 {
     public function index()
     {
+        $tags = \App\Models\Tag::with('recipes')->get();
+
         $recipes = Recipe::where('status', 'approved')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('frontend.v_recipes.recipes', compact('recipes'));
+    return view('frontend.v_recipes.recipes', compact('recipes', 'tags'));
     }
     public function kategori($nama_kategori)
     {

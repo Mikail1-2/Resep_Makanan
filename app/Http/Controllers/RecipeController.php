@@ -78,14 +78,103 @@ class RecipeController extends Controller
     }
     public function myRecipe()
     {
-        $recipes = Recipe::with('kategori')
+        $pendingRecipes = Recipe::with('kategori')
             ->where('user_id', Auth::id())
+            ->where('status', 'pending')
+            ->latest()
+            ->get();
+
+        $rejectedRecipes = Recipe::with('kategori')
+            ->where('user_id', Auth::id())
+            ->where('status', 'rejected')
+            ->latest()
+            ->get();
+
+        $approvedRecipes = Recipe::with('kategori')
+            ->where('user_id', Auth::id())
+            ->where('status', 'approved')
             ->latest()
             ->get();
 
         return view(
             'frontend.v_myrecipe.myrecipe',
-            compact('recipes')
+            compact(
+                'pendingRecipes',
+                'rejectedRecipes',
+                'approvedRecipes'
+            )
         );
+    }
+
+    public function show($id)
+    {
+        $recipe = Recipe::with([
+            'user',
+            'kategori'
+        ])
+            ->where('user_id', Auth::id())
+            ->findOrFail($id);
+
+        return view(
+            'frontend.v_myrecipe.show',
+            compact('recipe')
+        );
+    }
+    public function edit($id)
+    {
+        $recipe = Recipe::where(
+            'user_id',
+            Auth::id()
+        )->findOrFail($id);
+
+        return view(
+            'frontend.v_myrecipe.edit',
+            compact('recipe')
+        );
+    }
+
+    public function update(Request $request, $id)
+    {
+        $recipe = Recipe::where(
+            'user_id',
+            Auth::id()
+        )->findOrFail($id);
+
+        $recipe->recipe_name = $request->recipe_name;
+        $recipe->kategori_id = $request->kategori_id;
+        $recipe->ingredients = $request->ingredients;
+        $recipe->instructions = $request->instructions;
+
+        if ($request->hasFile('image')) {
+
+            $filename =
+                time() . '.' .
+                $request->image->extension();
+
+            $request->image->move(
+                public_path('uploads/recipes'),
+                $filename
+            );
+
+            $recipe->image = $filename;
+        }
+
+        // otomatis kirim ulang ke approval
+        $recipe->status = 'pending';
+
+        // hapus alasan reject lama
+        $recipe->reject_reason = null;
+
+        $recipe->save();
+
+        return redirect()
+            ->route(
+                'frontend.myrecipe.show',
+                $recipe->id
+            )
+            ->with(
+                'success',
+                'Recipe resubmitted successfully.'
+            );
     }
 }

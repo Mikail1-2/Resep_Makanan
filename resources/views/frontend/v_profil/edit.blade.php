@@ -61,22 +61,27 @@
 
                 <div class="form-group">
                     <label>Name</label>
-
-                    <input type="text" name="nama" value="{{ $user->nama }}">
+                    <input type="text" name="nama" value="{{ $user->nama }}" required minlength="2">
+                    @error('nama')
+                        <small style="color:red; font-weight:bold;">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-
-                    <input type="email" name="email" value="{{ $user->email }}">
+                    <input type="email" name="email" value="{{ $user->email }}" required>
+                    @error('email')
+                        <small style="color:red; font-weight:bold;">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label>Phone Number</label>
-
-                    <input type="text" name="hp" value="{{ $user->hp }}">
+                    <input type="text" name="hp" value="{{ $user->hp }}" required pattern="[0-9]{10,13}">
+                    @error('hp')
+                        <small style="color:red; font-weight:bold;">{{ $message }}</small>
+                    @enderror
                 </div>
-
                 <button type="button" class="save-btn" onclick="confirmSave()">
 
                     Save Changes

@@ -39,12 +39,19 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         $request->validate([
-            'nama' => 'required|max:100',
-            'email' => 'required|email',
-            'hp' => 'nullable|max:20',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
+            'nama' => 'required|min:2',
+            'email' => 'required|email|unique:user,email,' . Auth::id(),
+            'hp' => 'required|numeric|digits_between:10,13',
+        ], [
+            'nama.required' => 'Nama wajib diisi!',
+            'nama.min' => 'Nama minimal 2 karakter!',
+            'email.required' => 'Email wajib diisi!',
+            'email.email' => 'Format email tidak valid!',
+            'email.unique' => 'Email sudah dipakai akun lain!',
+            'hp.required' => 'Nomor HP wajib diisi!',
+            'hp.numeric' => 'Nomor HP hanya boleh angka!',
+            'hp.digits_between' => 'Nomor HP harus 10-13 digit!',
         ]);
-
         $user->nama = $request->nama;
         $user->email = $request->email;
         $user->hp = $request->hp;

@@ -31,6 +31,7 @@ class CreateRecipeController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'ingredients' => 'required',
             'instructions' => 'required',
+            'description'  => 'required',
         ], [
             // Opsional: Pesan error kustom (biar bahasa Indonesia)
             'recipe_name.required' => 'Nama resep wajib diisi!',
@@ -38,7 +39,8 @@ class CreateRecipeController extends Controller
             'tags.required' => 'Tag wajib dipilih!',
             'image.required' => 'Gambar makanan wajib diupload!',
             'ingredients.required' => 'Bahan-bahan tidak boleh kosong!',
-            'instructions.required' => 'Cara membuat wajib diisi!'
+            'instructions.required' => 'Cara membuat wajib diisi!',
+            'description.required'  => 'Deskripsi wajib diisi!',
         ]);
         // Tangkap semua isian form
         $data = $request->all();

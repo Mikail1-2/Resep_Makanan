@@ -28,7 +28,7 @@
     </div>
 
     <div class="search-filter-container">
-        <form action="{{ route('web.utama') }}" method="GET" class="search-form"
+        <form action="{{ route('publik.recipe') }}" method="GET" class="search-form"
             style="display:flex;gap:10px;align-items:center;">
 
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari resep makanan..."

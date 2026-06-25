@@ -8,16 +8,29 @@ use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $tags = \App\Models\Tag::with('recipes')->get();
 
-        $recipes = Recipe::where('status', 'approved')
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $query = Recipe::where('status', 'approved');
 
-    return view('frontend.v_recipes.recipes', compact('recipes', 'tags'));
+        // Search
+        if ($request->filled('search')) {
+            $query->where('recipe_name', 'like', '%' . $request->search . '%');
+        }
+
+        // Filter tags
+        if ($request->filled('tags')) {
+            $query->whereHas('tags', function ($q) use ($request) {
+                $q->whereIn('name', $request->tags);
+            });
+        }
+
+        $recipes = $query->orderBy('created_at', 'desc')->get();
+
+        return view('frontend.v_recipes.recipes', compact('recipes', 'tags'));
     }
+
     public function kategori($nama_kategori)
     {
         // Cari resep di database yang kolom 'category'-nya sama dengan nama menu yang diklik

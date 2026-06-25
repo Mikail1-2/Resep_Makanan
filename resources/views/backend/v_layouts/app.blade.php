@@ -42,17 +42,6 @@
                     </a>
 
                 </li>
-
-                <li>
-
-                    <a href="{{ route('kategori.index') }}">
-
-                        Manage Recipe
-
-                    </a>
-
-                </li>
-
                 <li>
 
                     <a href="{{ route('kategori.index') }}">

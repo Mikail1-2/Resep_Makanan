@@ -22,7 +22,8 @@ class Recipe extends Model
         'reject_reason',
         'image',
         'ingredients',
-        'instructions'
+        'instructions',
+        'description'
     ];
 
     // Tambahkan fungsi ini di dalam class Recipe

@@ -18,7 +18,7 @@ class BerandaController extends Controller
                 'judul' => 'Dashboard',
                 'totalUser' => User::count(),
                 'totalRecipe' => Recipe::count(),
-                'totalPending'   => Recipe::where('status', 'pending')->count(),
+                'totalPending' => Recipe::where('status', 'pending')->count(),
 
                 // Buat diagram pie //
                 'chartMakanan' => Recipe::where('status', 'approved')->where('kategori_id', 1)->count(),
@@ -81,28 +81,22 @@ class BerandaController extends Controller
 
     public function makanan(Request $request)
     {
-        // 1. Ambil data tag untuk ditampilkan di opsi dropdown filter
         $tags = Tag::all();
 
-        // 2. Siapkan wadah query utama (misal kategori_id = 1 untuk Makanan)
-        // Jangan langsung di-get() dulu, karena kita mau saring!
         $query = Recipe::where('kategori_id', 1)->where('status', 'approved');
 
-        // 3. LOGIKA PENCARIAN KATA (SEARCH)
-        if ($request->has('search') && $request->search != '') {
-            // Tanda % di depan dan belakang artinya "cari huruf ini di mana saja (depan, tengah, belakang)"
+        // Search
+        if ($request->filled('search')) {
             $query->where('recipe_name', 'like', '%' . $request->search . '%');
         }
 
-        // 4. LOGIKA FILTER TAG
-        if ($request->has('tag') && $request->tag != '') {
-            // whereHas akan mengecek ke tabel perantara (recipe_tag)
+        // Filter tags (array dari checkbox)
+        if ($request->filled('tags')) {
             $query->whereHas('tags', function ($q) use ($request) {
-                $q->where('name', $request->tag); // Saring berdasarkan nama tag
+                $q->whereIn('name', $request->tags);
             });
         }
 
-        // 5. Setelah selesai disaring, baru kita eksekusi (get)
         $resep_terbaru = $query->get();
 
         return view('frontend.v_recipes.makanan', compact('resep_terbaru', 'tags'));

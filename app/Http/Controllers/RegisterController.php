@@ -37,7 +37,7 @@ class RegisterController extends Controller
             'status' => 1
         ]);
 
-        return redirect()->route('backend.login')
+        return redirect()->route('login')
                          ->with('success', 'Register berhasil');
     }
 }

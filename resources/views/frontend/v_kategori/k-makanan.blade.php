@@ -5,32 +5,37 @@
 @endpush
 
 @section('content')
-<div class="kategori-container">
-    <h2>Resep Makanan</h2>
-    
-    <div class="recipe-grid">
-        @foreach($recipes as $resep)
-            <div class="recipe-card">
-                
-                {{-- 1. Gambar dibungkus tag <a> agar bisa diklik dan pindah halaman --}}
-                <a href="{{ route('resep.detail', $resep->id) }}">
-                    <img src="{{ asset('uploads/recipes/' . $resep->image) }}" alt="{{ $resep->recipe_name }}" class="recipe-image">
-                </a>
-                
-                <div class="recipe-info">
-                    {{-- 2. Nama Resep --}}
-                    <h3 class="recipe-title">{{ $resep->recipe_name }}</h3>
-                    
-                    {{-- 3. Nama Publisher --}}
-                    <p class="recipe-publisher">Oleh: {{ $resep->user->nama ?? 'Anonim' }}</p>
-                </div   >
+    <div class="kategori-container">
+        <h2>Resep Makanan</h2>
 
-            </div>
-        @endforeach
+        <div class="recipe-grid">
+            @foreach($recipes as $resep)
+                <div class="recipe-card">
+
+                    {{-- 1. Gambar dibungkus tag <a> agar bisa diklik dan pindah halaman --}}
+                        <a href="{{ route('resep.detail', $resep->id) }}">
+                            <img src="{{ asset('uploads/recipes/' . $resep->image) }}" alt="{{ $resep->recipe_name }}"
+                                class="recipe-image">
+                        </a>
+
+                        <div class="recipe-info">
+                            {{-- 2. Nama Resep --}}
+                            <h3 class="recipe-title">{{ $resep->recipe_name }}</h3>
+
+                            {{-- Tags --}}
+                            <div class="recipe-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;">
+                                @foreach($resep->tags as $tag)
+                                    <span class="tag-green">{{ $tag->name }}</span>
+                                @endforeach
+                            </div>
+                        </div>
+
+                </div>
+            @endforeach
+        </div>
+
+        @if($recipes->isEmpty())
+            <p class="empty-message">Belum ada resep makanan yang ditambahkan.</p>
+        @endif
     </div>
-
-    @if($recipes->isEmpty())
-        <p class="empty-message">Belum ada resep makanan yang ditambahkan.</p>
-    @endif
-</div>
 @endsection

@@ -42,8 +42,9 @@
 
 /* Bagian Teks di bawah gambar */
 .recipe-info {
-    padding: 18px;
+    padding: 10px;
 }
+
 
 .recipe-title {
     margin: 0 0 8px 0;
@@ -78,4 +79,17 @@
     color: #e74c3c;
     margin-top: 20px;
     font-weight: 500;
+}
+
+.recipe-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.recipe-publisher {
+    color: #888;
+    font-size: 14px;
+    margin: 0;
 }

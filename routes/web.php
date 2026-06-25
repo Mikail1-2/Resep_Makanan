@@ -57,13 +57,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/delete-photo', [ProfileController::class, 'delete'])->name('frontend.profile.deletephoto');
     // Halaman my recipe
     Route::get('/my-recipe', [RecipeController::class, 'myRecipe'])->name('frontend.myrecipe');
-    Route::get('/my-recipe/{id}',[RecipeController::class, 'show'])->name('frontend.myrecipe.show');
+    Route::get('/my-recipe/{id}', [RecipeController::class, 'show'])->name('frontend.myrecipe.show');
     // Halaman edit my recipe
-    Route::get('/recipe/{id}/edit',[RecipeController::class, 'edit'])->name('frontend.recipe.edit');
-    Route::post('/recipe/{id}/update',[RecipeController::class, 'update'])->name('frontend.recipe.update');
+    Route::get('/recipe/{id}/edit', [RecipeController::class, 'edit'])->name('frontend.recipe.edit');
+    Route::post('/recipe/{id}/update', [RecipeController::class, 'update'])->name('frontend.recipe.update');
     // Fitur Create Recipe
     Route::get('/create', [CreateRecipeController::class, 'index'])->name('frontend.create');
     Route::post('/recipe/store', [CreateRecipeController::class, 'store'])->name('recipe.store');
+    // Recipe Approval
     // Fitur Kategori (Admin)
     Route::get('/manage-category',[ManageKategoriController::class,'index'])->name('kategori.index');
     Route::post('/manage-category/store',[ManageKategoriController::class,'store'])->name('kategori.store');
@@ -77,7 +78,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('backend/approval', [RecipeController::class, 'approval'])->name('backend.approval');
     Route::post('backend/approval/{id}/approve', [RecipeController::class, 'approve'])->name('backend.approve');
     Route::post('backend/approval/{id}/reject', [RecipeController::class, 'reject'])->name('backend.reject');
-
+    Route::get('/approval/{id}', [RecipeController::class, 'approvedDetail'])->name('backend.approval.detail');
     // Manage User
     Route::resource('manage-user', UserManagementController::class)->middleware('auth');
 

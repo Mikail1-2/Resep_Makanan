@@ -7,7 +7,7 @@
 </div>
 
 <div class="search-filter-container">
-    <form action="{{ route('web.utama') }}" method="GET" class="search-form"
+    <form action="{{ route('publik.recipe') }}" method="GET" class="search-form"
         style="display:flex;gap:10px;align-items:center;">
 
         <input type="text" name="search" value="{{ request('search') }}"
@@ -55,6 +55,7 @@
                 <img src="{{ asset('uploads/recipes/' . $data->image) }}" alt="{{ $data->recipe_name }}">
                 <div class="recipe-content">
                     <h3>{{ $data->recipe_name }}</h3>
+                    <p>{{ $data->kategori->name }}</p>
                     <div class="recipe-tags" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
                         @foreach($data->tags as $tag)
                             <span class="tag-green">{{ $tag->name }}</span>

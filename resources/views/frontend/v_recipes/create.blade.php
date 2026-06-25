@@ -1,11 +1,12 @@
 @extends('frontend.v_layouts.app')
 
 <link rel="stylesheet" href="{{ asset('frontend/css/create-recipe.css') }}">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 @section('content')
 
     <h1 class="page-title">
-        Buat Resep 
+        Buat Resep
     </h1>
 
     <div class="create-recipe-card">
@@ -24,8 +25,9 @@
                 </label>
 
                 {{-- Tambahkan class bawaan untuk mewarnai border jadi merah kalau error --}}
-                <input type="text" name="recipe_name" placeholder="Contoh: Nasgor Goreng" class="form-control @error('recipe_name') is-invalid @enderror"
-                    value="{{ old('recipe_name') }}" style="@error('recipe_name') border-color: red; @enderror">
+                <input type="text" name="recipe_name" placeholder="Contoh: Nasgor Goreng"
+                    class="form-control @error('recipe_name') is-invalid @enderror" value="{{ old('recipe_name') }}"
+                    style="@error('recipe_name') border-color: red; @enderror">
 
                 {{-- Munculkan pesan error di bawah inputan --}}
                 @error('recipe_name')
@@ -68,7 +70,7 @@
                     </select>
 
                     @error('kategori_id')
-                    <small style="color: red; font-weight: bold;">{{ $message }}</small>
+                        <small style="color: red; font-weight: bold;">{{ $message }}</small>
                     @enderror
 
                 </div>
@@ -104,6 +106,8 @@
                 </div>
             </div>
 
+
+
             {{-- ========================= --}}
             {{-- IMAGE --}}
             {{-- ========================= --}}
@@ -116,6 +120,23 @@
 
                 <input type="file" name="image" class="form-control">
 
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Deskripsi
+                    <span class="required-text">*Wajib Diisi</span>
+                </label>
+
+                {{-- Editor Quill tampil di sini --}}
+                <div id="quill-editor" style="height: 200px;"></div>
+
+                {{-- Input hidden untuk menyimpan isi editor dan dikirim ke Laravel --}}
+                <input type="hidden" name="description" id="description">
+
+                @error('description')
+                    <small style="color: red; font-weight: bold;">{{ $message }}</small>
+                @enderror
             </div>
 
             {{-- ========================= --}}
@@ -131,6 +152,8 @@
                 <textarea name="ingredients" rows="5" placeholder="Enter ingredients" class="form-control"></textarea>
 
             </div>
+
+
 
             {{-- ========================= --}}
             {{-- INSTRUCTIONS --}}
@@ -195,4 +218,26 @@
         </script>
     </div>
 
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script>
+        var quill = new Quill('#quill-editor', {
+            theme: 'snow',
+            placeholder: 'Tulis deskripsi resep...',
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'align': [] }],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'size': ['small', false, 'large', 'huge'] }],
+                    [{ 'color': [] }],
+                    ['clean']
+                ]
+            }
+        });
+
+        // Sebelum form disubmit, salin isi editor ke input hidden
+        document.querySelector('form').addEventListener('submit', function () {
+            document.getElementById('description').value = quill.root.innerHTML;
+        });
+    </script>
 @endsection

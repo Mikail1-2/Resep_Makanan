@@ -27,6 +27,7 @@ return new class extends Migration {
             $table->string('image');
             $table->text('ingredients');
             $table->text('instructions');
+            $table->longText('description')->nullable();
             $table->timestamps(); // Bikin kolom created_at dan updated_at otomatis
         });
     }

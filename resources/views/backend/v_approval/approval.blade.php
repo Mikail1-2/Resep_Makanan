@@ -8,7 +8,7 @@
 
     <div class="card">
 
-        <h2>Recipe Approval</h2>
+        <h2>Persetujuan Resep</h2>
 
         @foreach($recipes as $recipe)
 
@@ -28,12 +28,12 @@
                 <div class="info-section">
 
                     <p>
-                        <strong>Category :</strong>
+                        <strong>Kategori :</strong>
                         {{ $recipe->kategori->name }}
                     </p>
 
                     <p>
-                        <strong>Submitted By :</strong>
+                        <strong>Diajukan oleh :</strong>
                         {{ $recipe->user->nama }}
                     </p>
 
@@ -59,7 +59,7 @@
                         <form action="{{ route('backend.approve', $recipe->id) }}" method="POST">
                             @csrf
                             <button type="submit" class="approve-btn">
-                                Approve
+                                Setujui
                             </button>
                         </form>
 
@@ -69,7 +69,7 @@
                             @csrf
 
                             <button type="submit" class="reject-btn">
-                                Reject
+                                Tolak
                             </button>
 
                         </form>
@@ -77,7 +77,7 @@
                     </div>
 
                     <textarea name="reject_reason" form="reject-form-{{ $recipe->id }}" class="reject-reason"
-                        placeholder="Enter rejection reason..." required></textarea>
+                        placeholder="Masukkan alasan penolakan..." required></textarea>
 
                 </div>
 

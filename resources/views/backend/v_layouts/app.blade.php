@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resepku</title>
     <link rel="icon" type="image/png" href="{{ asset('image/Logo.png') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/beranda.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -37,7 +36,7 @@
 
                     <a href="{{ route('backend.approval') }}">
 
-                        Approved Recipe
+                        Resep yang Di Setujui
 
                     </a>
 
@@ -46,7 +45,7 @@
 
                     <a href="{{ route('kategori.index') }}">
 
-                        Manage Category
+                        Kelola Kategori
 
                     </a>
 
@@ -56,7 +55,7 @@
 
                     <a href="{{ route('manage-user.index') }}">
 
-                        Manage User
+                        Kelola Pengguna
 
                     </a>
 

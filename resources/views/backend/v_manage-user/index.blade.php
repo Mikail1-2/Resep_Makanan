@@ -5,7 +5,7 @@
 @section('content')
 
 <h1 class="page-title">
-    Manage Users
+    Kelola Pengguna
 </h1>
 
 {{-- ========================= --}}
@@ -15,7 +15,7 @@
 
     <div class="card">
 
-        <h3>Total Users</h3>
+        <h3>Total Pengguna</h3>
 
         <h2>
             {{ $totalUsers }}
@@ -44,7 +44,7 @@
     <div class="section-header">
 
         <h2>
-            Guest / User
+            Tamu / Pengguna
         </h2>
 
         <input type="text"
@@ -63,7 +63,7 @@
                 <tr>
 
                     <th>
-                        Name
+                        Nama
                     </th>
 
                     <th>
@@ -71,11 +71,11 @@
                     </th>
 
                     <th>
-                        Phone
+                        No. HP
                     </th>
 
                     <th>
-                        Action
+                        Aksi
                     </th>
 
                 </tr>
@@ -160,7 +160,7 @@
                 <tr>
 
                     <th>
-                        Name
+                        Nama
                     </th>
 
                     <th>
@@ -168,11 +168,11 @@
                     </th>
 
                     <th>
-                        Phone
+                        No. HP
                     </th>
 
                     <th>
-                        Action
+                        Aksi
                     </th>
 
                 </tr>

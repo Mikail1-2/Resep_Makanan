@@ -70,7 +70,7 @@
             @if(Request::route()->getName() == 'backend.beranda')
 
                 <div class="topbar">
-                    <h1>Food Dashboard</h1>
+                    <h1>Dashboard Admin</h1>
 
                     <div class="topbar-action">
 

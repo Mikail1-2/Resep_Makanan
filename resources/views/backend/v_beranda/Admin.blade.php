@@ -31,7 +31,7 @@
             <div class="metric-top">
                 <div class="metric-icon">⏳</div>
             </div>
-            <h4>Pending Approval</h4>
+            <h4>Menunggu Persetujuan</h4>
             <h2>{{ $totalPending }}</h2>
         </div>
     </div>

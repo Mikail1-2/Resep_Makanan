@@ -56,7 +56,7 @@ body {
 
 .row2 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; /* ubah dari 1fr 1fr */
     gap: 20px;
     margin-bottom: 20px;
 }

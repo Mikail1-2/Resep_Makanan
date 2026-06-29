@@ -36,7 +36,7 @@
 
                     <a href="{{ route('backend.approval') }}">
 
-                        Approved Recipe
+                        Resep yang Di Setujui
 
                     </a>
 
@@ -45,7 +45,7 @@
 
                     <a href="{{ route('kategori.index') }}">
 
-                        Manage Category
+                        Kelola Kategori
 
                     </a>
 
@@ -55,7 +55,7 @@
 
                     <a href="{{ route('manage-user.index') }}">
 
-                        Manage User
+                        Kelola Pengguna
 
                     </a>
 

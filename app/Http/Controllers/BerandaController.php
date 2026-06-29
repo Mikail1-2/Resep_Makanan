@@ -25,6 +25,7 @@ class BerandaController extends Controller
                 'chartMinuman' => Recipe::where('status', 'approved')->where('kategori_id', 2)->count(),
                 'chartDessert' => Recipe::where('status', 'approved')->where('kategori_id', 3)->count(),
 
+                'recentUsers'   => User::latest()->take(5)->get(),
                 'recentRecipes' => Recipe::with('kategori')->latest()->take(5)->get(),
             ]);
         }

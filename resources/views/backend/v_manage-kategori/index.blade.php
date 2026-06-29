@@ -16,10 +16,10 @@
             <form action="{{ route('kategori.store') }}" method="POST" class="add-form">
                 @csrf
 
-                <input type="text" name="name" class="search-input" placeholder="Category Name" required>
+                <input type="text" name="name" class="search-input" placeholder="Nama Kategori" required>
 
                 <button class="search-btn">
-                    Add Category
+                    Tambah Kategori
                 </button>
             </form>
         </div>
@@ -32,9 +32,9 @@
 
                     <tr>
                         <th width="80">No</th>
-                        <th>Name</th>
-                        <th width="180">Total Recipes</th>
-                        <th width="250">Actions</th>
+                        <th>Nama</th>
+                        <th width="180">Total Resep</th>
+                        <th width="250">Aksi</th>
                     </tr>
 
                 </thead>
@@ -102,8 +102,8 @@
             <h3>Tag</h3>
             <form action="{{ route('tags.store') }}" method="POST" class="add-form">
                 @csrf
-                <input type="text" name="name" class="search-input" placeholder="Tag Name" required>
-                <button class="search-btn">Add Tag</button>
+                <input type="text" name="name" class="search-input" placeholder="Nama Tag" required>
+                <button class="search-btn">Tambah Tag</button>
             </form>
         </div>
 
@@ -112,9 +112,9 @@
                 <thead>
                     <tr>
                         <th width="60">No</th>
-                        <th>Name</th>
-                        <th width="140">Total Recipes</th>
-                        <th width="320">Actions</th>
+                        <th>Nama</th>
+                        <th width="140">Total Resep</th>
+                        <th width="320">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

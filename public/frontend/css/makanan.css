@@ -8,9 +8,8 @@
 /* Grid Pembungkus Kartu Resep - DIPERBAIKI */
 .recipe-grid {
     display: grid;
-    /* Ganti aturan ini agar satu item tidak me-lebar horisontal */
-    grid-template-columns: repeat(auto-fill, 320px); /* Lebar kartu dibuat tetap 320px agar persegi */
-    justify-content: start; /* Grid menempel ke kiri, tidak ke tengah */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    justify-content: start;
     gap: 25px;
     margin-top: 20px;
 }

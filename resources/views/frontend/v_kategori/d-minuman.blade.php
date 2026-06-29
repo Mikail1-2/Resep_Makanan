@@ -1,41 +1,41 @@
 @extends('frontend.v_layouts.app')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('frontend/css/detail.css') }}">
+@endpush
+
 @section('content')
-    <div class="detail-container" style="padding: 20px; background: #fff; border-radius: 10px; margin-top: 20px;">
+<div class="detail-container">
 
-        {{-- Tombol Kembali --}}
-        <a href="{{ url()->previous() }}"
-            style="display: inline-block; margin-bottom: 20px; text-decoration: none; color: #ff7a21;">
-            ⬅ Kembali
-        </a>
+    <a href="{{ url()->previous() }}" class="back-btn">⬅ Kembali</a>
 
-        {{-- Judul dan Gambar --}}
-        <h1 style="margin-bottom: 15px;">{{ $resep->recipe_name }}</h1>
-        <img src="{{ asset('uploads/recipes/' . $resep->image) }}" alt="{{ $resep->recipe_name }}"
-            style="width: 100%; max-width: 600px; border-radius: 10px; margin-bottom: 20px;">
+    <h1>{{ $resep->recipe_name }}</h1>
 
-        {{-- Deskripsi --}}
-        @if($resep->description)
-            <div style="margin-bottom: 20px;">
-                <h3>Deskripsi:</h3>
-                <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
-                    {!! $resep->description !!}
-                </div>
-            </div>
-        @endif
+    <img src="{{ asset('uploads/recipes/' . $resep->image) }}"
+        alt="{{ $resep->recipe_name }}" class="detail-image">
 
-        {{-- Bahan-bahan --}}
+    @if($resep->description)
+    <div class="detail-section">
+        <h3>Deskripsi:</h3>
+        <div class="detail-box">
+            {!! $resep->description !!}
+        </div>
+    </div>
+    @endif
+
+    <div class="detail-section">
         <h3>Bahan-bahan:</h3>
-        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-            {{-- Karena biasanya bahan pakai enter, kita pakai nl2br biar enternya terbaca --}}
+        <div class="detail-box">
             <p>{!! nl2br(e($resep->ingredients)) !!}</p>
         </div>
+    </div>
 
-        {{-- Cara Membuat --}}
+    <div class="detail-section">
         <h3>Cara Membuat:</h3>
-        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+        <div class="detail-box">
             <p>{!! nl2br(e($resep->instructions)) !!}</p>
         </div>
-
     </div>
+
+</div>
 @endsection

@@ -117,57 +117,32 @@
 
     <div class="card">
 
-        <h3>
-            Recent Recipe
-        </h3>
+        <h3>Recent Recipes</h3>
 
-        <div class="recipe-item">
+        @forelse($recentRecipes as $resep)
 
-            <div>
+            <div class="recipe-item">
 
-                <h4>Nasi Goreng</h4>
+                <div>
+                    <h4>{{ $resep->recipe_name }}</h4>
+                    <small>{{ $resep->kategori->name ?? '-' }}</small>
+                </div>
 
-                <small>Makanan</small>
-
-            </div>
-
-            <span class="recipe-status">
-                Published
-            </span>
-
-        </div>
-
-        <div class="recipe-item">
-
-            <div>
-
-                <h4>Orange Juice</h4>
-
-                <small>Minuman</small>
+                <span class="recipe-status status-{{ $resep->status }}">
+                    @if($resep->status == 'approved')
+                        Published
+                    @elseif($resep->status == 'pending')
+                        Pending
+                    @else
+                        Rejected
+                    @endif
+                </span>
 
             </div>
 
-            <span class="recipe-status">
-                Published
-            </span>
-
-        </div>
-
-        <div class="recipe-item">
-
-            <div>
-
-                <h4>Ice Cream</h4>
-
-                <small>Dessert</small>
-
-            </div>
-
-            <span class="recipe-status">
-                Pending
-            </span>
-
-        </div>
+        @empty
+            <p>Belum ada resep.</p>
+        @endforelse
 
     </div>
 

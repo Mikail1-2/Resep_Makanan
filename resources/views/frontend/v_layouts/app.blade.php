@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foody Dashboard</title>
-
+    <title>Resepku</title>
+    <link rel="icon" type="image/png" href="{{ asset('image/Logo.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/beranda.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@
                             <a href="{{ route('frontend.create') }}">Buat Resep</a>
                         </li>
                         <li>
-                            <a href="{{ route('frontend.myrecipe') }}">Resep Saya</a>
+                            <a href="{{ route('frontend.myrecipe') }}">Resepku</a>
                         </li>
                     @endif
 
@@ -83,7 +83,7 @@
             @if(Request::route()->getName() == 'web.utama')
 
                 <div class="topbar">
-                    <h1>Food Dashboard</h1>
+                    <h1>Dashboard Resepku</h1>
 
                     <div class="topbar-action" style="display: flex; gap: 15px; align-items: center;">
 
@@ -145,8 +145,7 @@
                 </div>
 
                 <p>
-                    Discover delicious recipes, share your cooking ideas,
-                    and inspire others through your culinary creations.
+                    Temukan resep-resep lezat, bagikan ide memasak Anda, dan inspirasi orang lain melalui kreasi kuliner Anda.
                 </p>
 
             </div>
@@ -158,26 +157,26 @@
                 <ul>
                     <li>
                         <a href="{{ route('web.utama') }}">
-                            Home
+                            Dashboard
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('publik.recipe') }}">
-                            Recipes
+                            Resep
                         </a>
                     </li>
 
                     @auth
                         <li>
                             <a href="{{ route('frontend.create') }}">
-                                Create Recipe
+                                Buat Resep
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('frontend.myrecipe') }}">
-                                My Recipes
+                                Resepku
                             </a>
                         </li>
                     @endauth
@@ -188,19 +187,19 @@
 
             <div class="footer-col">
 
-                <h4>Categories</h4>
+                <h4>Kategori</h4>
 
                 <ul>
 
                     <li>
                         <a href="{{ route('publik.makanan') }}">
-                            Food
+                            Makanan
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('publik.minuman') }}">
-                            Drinks
+                            Minuman
                         </a>
                     </li>
 
@@ -216,7 +215,7 @@
 
             <div class="footer-col">
 
-                <h4>Follow Us</h4>
+                <h4>Ikuti Kami</h4>
 
                 <div class="footer-social">
 

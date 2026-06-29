@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login</title>
-
+    <link rel="icon" type="image/png" href="{{ asset('image/Logo.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/login.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -59,20 +59,14 @@
                     </span>
                 @enderror
 
-                <div class="forgot-wrapper">
-                    <a href="{{ route('forgot.password') }}" class="forgot-link">
-                        Forgot Password?
-                    </a>
-                </div>
-
                 <button type="submit" class="login-btn">
                     Login
                 </button>
 
                 <div class="register-text">
-                    Don’t have an account?
+                    Belum punya akun?
                     <a href="{{ route('register') }}" class="register-link">
-                        Create Account
+                        Buat Akun
                     </a>
                 </div>
 

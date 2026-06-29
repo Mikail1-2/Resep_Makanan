@@ -15,11 +15,11 @@
             <h1>{{ $recipe->recipe_name }}</h1>
 
             @if($recipe->status == 'approved')
-                <div class="status approved">✅ Approved</div>
+                <div class="status approved">✅ Disetujui</div>
             @elseif($recipe->status == 'pending')
-                <div class="status pending">⏳ Pending</div>
+                <div class="status pending">⏳ Tertunda</div>
             @else
-                <div class="status rejected">❌ Rejected</div>
+                <div class="status rejected">❌ Ditolak</div>
             @endif
         </div>
 
@@ -29,7 +29,7 @@
 
     @if($recipe->status == 'rejected')
         <div class="reject-box">
-            <h3>Rejection Notes</h3>
+            <h3>Catatan Penolakan</h3>
             <p>{{ $recipe->reject_reason }}</p>
         </div>
     @endif
@@ -60,7 +60,7 @@
     <div class="action-buttons">
         @if($recipe->status == 'rejected')
             <a href="{{ route('frontend.recipe.edit', $recipe->id) }}" class="edit-btn">
-                Edit Recipe
+                Edit Resep
             </a>
         @endif
     </div>

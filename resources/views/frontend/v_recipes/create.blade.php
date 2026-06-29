@@ -149,7 +149,7 @@
                     <span class="required-text">*Wajib Diisi</span>
                 </label>
 
-                <textarea name="ingredients" rows="5" placeholder="Enter ingredients" class="form-control"></textarea>
+                <textarea name="ingredients" rows="5" placeholder="Masukkan bahan-bahan" class="form-control"></textarea>
 
             </div>
 
@@ -165,7 +165,7 @@
                     <span class="required-text">*Wajib Diisi</span>
                 </label>
 
-                <textarea name="instructions" rows="6" placeholder="Enter cooking instructions"
+                <textarea name="instructions" rows="6" placeholder="Masukkan petunjuk memasak"
                     class="form-control"></textarea>
 
             </div>

@@ -35,14 +35,14 @@
             </div>
 
             <div class="info-item">
-                <span>Total Recipe</span>
+                <span>Total Resep</span>
                 <p>{{ $totalRecipe }}</p>
             </div>
 
         </div>
 
         <a href="{{ route('frontend.profile.edit') }}" class="edit-btn">
-            Edit Profile
+            Edit Profil
         </a>
 
     </div>

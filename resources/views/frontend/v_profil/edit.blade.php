@@ -16,7 +16,7 @@
 
         <div class="edit-profile-card">
 
-            <h2>Profile Settings</h2>
+            <h2>Pengaturan Profil</h2>
 
             <div class="profile-preview">
 
@@ -32,13 +32,13 @@
 
                 <label for="foto" class="change-photo-btn">
                     <i class="fas fa-pen"></i>
-                    Change
+                    Ubah
                 </label>
 
                 <button type="button" id="remove-btn" class="remove-photo-btn" onclick="handleRemovePhoto()" {{ !$user->foto ? 'disabled' : '' }}>
 
                     <i class="fas fa-trash"></i>
-                    Remove
+                    Hapus
 
                 </button>
 
@@ -60,7 +60,7 @@
                 <input type="file" id="foto" name="foto" hidden>
 
                 <div class="form-group">
-                    <label>Name</label>
+                    <label>Nama</label>
                     <input type="text" name="nama" value="{{ $user->nama }}" required minlength="2">
                     @error('nama')
                         <small style="color:red; font-weight:bold;">{{ $message }}</small>
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Phone Number</label>
+                    <label>Nomor Telepon</label>
                     <input type="text" name="hp" value="{{ $user->hp }}" required pattern="[0-9]{10,13}">
                     @error('hp')
                         <small style="color:red; font-weight:bold;">{{ $message }}</small>
@@ -84,7 +84,7 @@
                 </div>
                 <button type="button" class="save-btn" onclick="confirmSave()">
 
-                    Save Changes
+                    Simpan Perubahan
 
                 </button>
 

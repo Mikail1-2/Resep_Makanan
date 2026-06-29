@@ -8,10 +8,10 @@
 
     <div class="myrecipe-header">
 
-        <h2>My Recipes</h2>
+        <h2>Resepku</h2>
 
         <p>
-            Manage all recipes you have submitted.
+            Kelola semua resep yang telah Anda kirimkan.
         </p>
 
     </div>
@@ -20,7 +20,7 @@
     @if($pendingRecipes->count())
 
         <h3 class="section-title">
-            Pending Recipes
+            Resep yang Menunggu Persetujuan
         </h3>
 
         <div class="recipe-grid">
@@ -46,7 +46,7 @@
                         </p>
 
                         <span class="status pending">
-                            Pending
+                            Tertunda
                         </span>
 
                     </div>
@@ -64,7 +64,7 @@
     @if($rejectedRecipes->count())
 
         <h3 class="section-title">
-            Rejected Recipes
+            Resep yang Ditolak
         </h3>
 
         <div class="recipe-grid">
@@ -90,7 +90,7 @@
                         </p>
 
                         <span class="status rejected">
-                            Rejected
+                            Ditolak
                         </span>
 
                         <p class="reject-note">
@@ -112,7 +112,7 @@
     @if($approvedRecipes->count())
 
         <h3 class="section-title">
-            Approved Recipes
+            Resep yang Disetujui
         </h3>
 
         <div class="recipe-grid">
@@ -138,7 +138,7 @@
                         </p>
 
                         <span class="status approved">
-                            Approved
+                            Disetujui
                         </span>
 
                     </div>
@@ -160,10 +160,10 @@
 
         <div class="empty-state">
 
-            <h3>No Recipes Yet</h3>
+            <h3>Belum Ada Resep</h3>
 
             <p>
-                You haven't submitted any recipes yet.
+                Anda belum mengirimkan resep apa pun.
             </p>
 
         </div>

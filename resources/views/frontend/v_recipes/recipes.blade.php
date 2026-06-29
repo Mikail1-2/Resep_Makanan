@@ -45,8 +45,8 @@
             @endif
 
 
-    </form>  {{-- ← DITUTUP DI SINI --}}
-</div>   {{-- ← DITUTUP DI SINI --}}
+    </form>
+</div>   
 
 <div class="recipes">
     @foreach($recipes as $data)

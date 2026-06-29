@@ -9,7 +9,7 @@
 @section('content')
 
     <h1 class="page-title">
-        Edit Recipe
+        Edit Resep
     </h1>
 
     <div class="create-recipe-card">
@@ -22,7 +22,7 @@
             <div class="form-group">
 
                 <label>
-                    Recipe Name
+                    Nama Resep
                 </label>
 
                 <input type="text" name="recipe_name" value="{{ $recipe->recipe_name }}" class="form-control">
@@ -35,7 +35,7 @@
                 <div class="form-group half">
 
                     <label>
-                        Category
+                        Kategori
                     </label>
 
                     <select name="kategori_id" class="form-control">
@@ -62,7 +62,7 @@
             <div class="form-group">
 
                 <label>
-                    Current Image
+                    Gambar saat ini
                 </label>
 
                 <br>
@@ -79,7 +79,7 @@
             <div class="form-group">
 
                 <label>
-                    Replace Image (Optional)
+                    Ganti Gambar (Opsional)
                 </label>
 
                 <input type="file" name="image" class="form-control">
@@ -90,7 +90,7 @@
             <div class="form-group">
 
                 <label>
-                    Ingredients
+                    Bahan-bahan
                 </label>
 
                 <textarea name="ingredients" rows="5" class="form-control">{{ $recipe->ingredients }}</textarea>
@@ -101,7 +101,7 @@
             <div class="form-group">
 
                 <label>
-                    Instructions
+                    Petunjuk
                 </label>
 
                 <textarea name="instructions" rows="6" class="form-control">{{ $recipe->instructions }}</textarea>
@@ -110,7 +110,7 @@
 
             <button type="button" class="publish-btn" onclick="confirmSave()">
 
-                Send
+                Mengirim
 
             </button>
 

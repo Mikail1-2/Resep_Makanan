@@ -25,7 +25,7 @@
 
     <div class="card">
 
-        <h3>Total Admins</h3>
+        <h3>Total Admin</h3>
 
         <h2>
             {{ $totalAdmins }}
@@ -49,7 +49,7 @@
 
         <input type="text"
             id="userSearch"
-            placeholder="Search user..."
+            placeholder="Cari pengguna..."
             class="search-input">
 
     </div>
@@ -146,7 +146,7 @@
 
         <input type="text"
             id="adminSearch"
-            placeholder="Search admin..."
+            placeholder="Cari Admin..."
             class="search-input">
 
     </div>
